@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>身份选择</title>
+    <!-- 
+    base基本样式 所有页面必须引用 
+    fontstyle头部和左侧菜单字体样式
+    layeout头部和左侧布局样式
+    style页面主内容样式须引用
+    线上链接会有缓存请更新版本号
+    -->
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/layout.css?v=20171124"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/style.css?v=20171124">  
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/jquery-1.8.2.min.js"></script>
+</head>
+
+<body class="body-f">
+    <div class="f-head-before">
+        <div class="logoleft">
+            客户云
+        </div>
+        <div class="userright">
+        欢迎您，小海螺
+        <a href="javascript:;">退出</a>
+    </div>
+    </div>
+    <div class="f-choice-usertype">
+        <h3>请选择您的用户身份，以便后期为您提供精准的会员服务。</h3>
+        <div><strong>用户类型：</strong><span class="choice-item choice-item-on">个人</span><span class="choice-item">企业</span></div>
+        <div class="sp"><strong>用户身份：</strong>
+            <label class="f-check f-check-on"><span></span>新房置业顾问</label><label class="f-check"><span></span>二手房经纪人</label><label class="f-check"><span></span>设计师/公长</label>
+        </div>
+        <div class="sp" style="display: none;"><strong>用户身份：</strong>
+            <label class="f-check f-check-on"><span></span>开发商/楼盘销售代理公司</label><label class="f-check"><span></span>经纪公司</label><label class="f-check"><span></span>装修/建材公司</label>
+        </div>
+        <button class="btn btn-submit">确认身份</button>
+    </div>
+</body>
+
+</html>
+<script> 
+$('.f-choice-usertype span.choice-item').click(function() {
+    $(this).addClass('choice-item-on').siblings('.choice-item').removeClass('choice-item-on');
+    $('.sp').eq($(this).index()-1).show().siblings('.sp').hide();
+ })      
+</script>

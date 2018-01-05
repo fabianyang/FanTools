@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>发票-地址管理</title>
+	<link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+	<link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="assets/css/layout.css"> 
+    <link rel="stylesheet" href="assets/css/style.css">  
+    	<script src="assets/js/jquery-1.8.2.min.js"></script>
+        <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/bootstrap-datetimepicker.css">
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+
+</head>
+<body class="p-sidebar-closed">
+<div class="p-sidebar">
+	<div class="logo"><a href="tianxiacloud"></a></div>
+	<div class="side-bar-coll"><span></span></div>
+	<ul class="p-sidebar-menu clearfix">
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60c;</i></span>
+				<span class="title">首页</span>
+			</a>
+		</li>
+		<li class="open">
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe609;</i></span>
+				<span class="title">天下云</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60a;</i></span>
+				<span class="title">广告</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe604;</i></span>
+				<span class="title">电商</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60b;</i></span>
+				<span class="title">更多</span>
+			</a>
+		</li> 
+	</ul> 
+</div>
+    <div class="p-head">
+        <div class="header clearfix">
+            <div class="f-header-left">
+                <h1>开发商工作台</h1>
+                <div class="f-company-select drop-item">
+                    <p>北京万科股份科技有限公司公司</p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="headerr">
+                <div class="user-select drop-item">
+                    <p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="account-manage.html">账号管理</a></li>
+                            <li><a href="account-manage-person.html">账号管理-个人</a></li>
+                            <li><a href="account-authenticate.html">资质管理</a></li>
+                            <li><a href="account-authenticate-person-new.html">资质管理-个人</a></li>
+                            <li><a href="account-project-list.html">项目管理</a></li>
+                            <li><a href="account-per-manage.html">人员管理</a></li>
+                            <li><a href="account-role-manage.html">角色管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="userpic">
+                    <a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="money">费用</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="asset-pandect-manage.html">财产总览</a></li>
+                            <li><a href="asset-balance-manage.html">余额管理</a></li>
+                            <li><a href="asset-fangcoin-manage.html">房币管理</a></li>
+                            <li><a href="asset-redpacket-manage.html">红包管理</a></li>
+                            <li><a href="asset-order-manage.html">订单管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-item">
+                    <span>全部产品</span>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="project">项目切换</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- constart -->
+<div class="p-con">
+	<div class="sub-menu">
+        <h3>发票</h3>
+        <ul>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-edit.html">申请发票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-edit-per.html">申请发票-个人</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-list.html">发票列表</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-back.html">发票列表-退票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-addr.html">寄送地址管理</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-demand-list.html">索取发票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-demand-choice.html">索取发票-发票性质选择</a>
+            </li>
+        </ul>
+    </div>
+	<div class="menu-switch" id="menu-switch"></div>
+
+<div class="p-main">
+	<div class="c-row">
+		<div class="tab-nav clearfix">
+			<ul>
+				<li class="active">寄送地址</li>
+			</ul>
+            <div class="tab-nav-right">
+                <button class="btn btn-blue" onclick="showLayer()"><span class="btnico-plus"></span>添加地址</button>
+            </div>
+		</div>
+		<div class="tableWrap">
+                    <table class="f-table-list">
+                        <thead>
+                            <tr>
+                                <th>收件人姓名</th>
+                                <th>电话号码</th>
+                                <th>地址</th>
+                                <th>邮编</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>黎明</td>
+                                <td>12345678912</td>
+                                <td>北京海淀区</td>
+                                <td>200</td>
+                                <td>
+                                    <a href="#" class="link-a">修改</a>
+                                    <a href="#" class="link-a">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="color-red"><br>最多允许同事保存5个发票寄送地址</div>
+
+	</div>
+	</div></div>
+
+<div class="mask" style="">
+            <div class="layer" style="">
+                <div class="layer-top">新增地址<span class="layer-x" onclick="closeLayer()"></span></div>
+                <div class="layer-body">
+                    <div class="form-list"> 
+                        <dl>
+                            <dt>
+                                <span class="color-red">*</span>收件人姓名：
+                            </dt>
+                            <dd>
+                                 <input type="text" class="inpstyle inp344">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <span class="color-red">*</span>所在地区：
+                            </dt>
+                            <dd>
+                            <div class="city-linkage-3 clearfix">                                <div class="select">
+                                    <input type="text" class="inpstyle" value="北京"><span class="drop-arr"></span>
+                                    <div class="select-dropdown">
+                                        <ul>
+                                            <li>北京</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="select">
+                                    <input type="text" class="inpstyle" value="海淀"><span class="drop-arr"></span>
+                                    <div class="select-dropdown">
+                                        <ul>
+                                            <li>北京</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="select">
+                                    <input type="text" class="inpstyle" value="车道沟"><span class="drop-arr"></span>
+                                    <div class="select-dropdown">
+                                        <ul>
+                                            <li>北京</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <span class="color-red">*</span>街道地址：
+                            </dt>
+                            <dd>
+                             <input type="text" class="inpstyle inp344">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <span class="color-red">*</span>邮政编码：
+                            </dt>
+                            <dd>
+                             <input type="text" class="inpstyle inp344">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <span class="color-red">*</span>手机号：
+                            </dt>
+                            <dd>
+                                <input type="text" class="inpstyle inp344">
+                            </dd>
+                        </dl>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+                <div class="layer-foot">
+                    <button class="btn btn-submit">保存</button>
+                    <button class="btn">取消</button>
+                </div>
+            </div>
+
+            <div class="layer" style="display: none">
+        <div class="layer-top">完善信息<span class="layer-x"></span></div>
+        <div class="layer-body">
+             <br>
+             <p>该项目下尚有处于执行期内的产品，无法删除。</p>
+                 <br>
+        </div>
+        <div class="layer-foot">
+            <button class="btn btn-submit">确认</button>
+        </div>
+    </div>
+        </div>
+
+
+</body>
+<script src="assets/js/layout.js"></script>
+ <script>
+  $(".layer-x").click(function(){
+        $(".mask").hide();
+        $(".layer").hide();
+    })
+    $(".form_datetime").datetimepicker({
+        language:'zh-CN',
+         // 选择年-月-日
+        minView : "month",//设置只显示到月份
+        format : "yyyy-mm-dd",//日期格式
+        autoclose : true//选中关闭
+    });
+</script>     
+</html>	

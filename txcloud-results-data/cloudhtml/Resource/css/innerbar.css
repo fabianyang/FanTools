@@ -1,0 +1,72 @@
+﻿
+.sub-menu {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    background: #e8ecef;
+    overflow: hidden;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+    .sub-menu h3 {
+        padding: 5px 20px 0 35px;
+        width: 125px;
+        line-height: 44px;
+        height: 44px;
+        font-size: 12px;
+    }
+
+    .sub-menu ul {
+        width: 180px;
+    }
+
+.sub-menu-a a {
+    display: block;
+    padding: 0 20px 0 34px;
+    border-left: 2px solid #e8ecef;
+    line-height: 34px;
+    height: 34px;
+    background: url(../Resource/images/sub-menu.png) no-repeat 16px -34px;
+}
+
+    .sub-menu-a a.open {
+        background-color: #fff;
+        border-color: #5b96f7;
+        background-position: 16px 0;
+    }
+
+    .sub-menu-a a:hover {
+        background-color: #fff;
+        border-color: #5b96f7;
+        text-decoration: none;
+        background-position: 16px 0;
+    }
+
+    .sub-menu-a a.open:hover {
+        background-position: 16px 0;
+    }
+
+.sub-menu-b {
+    display: none;
+}
+
+    .sub-menu-b li a {
+        border: none;
+        padding-left: 46px;
+        background-image: none;
+    }
+
+        .sub-menu-b li a:hover, .sub-menu-b li a.open {
+            background: #f5f6f8;
+        }
+
+.sub-menu a.no-sub {
+    background-image: none;
+}
+.menu-switch{width:16px; height: 46px; z-index: 10; position: fixed; left:404px; top:42%; background:url(../images/menu-switch.png) no-repeat 0 0 !important; cursor:pointer;} 

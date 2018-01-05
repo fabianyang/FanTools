@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+    <!--
+        *basc.css 基础样式
+        *fontstyle.css layout.css 页面左侧和头部样式及图标库
+        *style.css 页面主内容样式表 主内容页面必须引用
+        *datetimepicker.css 时间控件样式
+        *theme-red.css 红色版主题样式 需放到其它css后面覆盖前面样式
+        *样式文件会存在缓存 修改需更新版本号
+   -->
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/layout.css"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/style.css">  
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/theme-red.css">
+
+    <script src="assets/js/jquery-1.8.2.min.js"></script>
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body class="p-sidebar-closed">
+<div class="p-sidebar">
+	<div class="logo"><a href="tianxiacloud"></a></div>
+	<div class="side-bar-coll"><span></span></div>
+	<ul class="p-sidebar-menu clearfix">
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe609;</i></span>
+				<span class="title">天下云</span>
+			</a>
+		</li>
+		<li class="open">
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60a;</i></span>
+				<span class="title">广告</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe604;</i></span>
+				<span class="title">搜房帮</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe603;</i></span>
+				<span class="title">周边顾问</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe606;</i></span>
+				<span class="title">二手房版</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe605;</i></span>
+				<span class="title">购房帮</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe607;</i></span>
+				<span class="title">管理系统</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe602;</i></span>
+				<span class="title">卖新房</span>
+			</a>
+		</li>
+	</ul> 
+</div>
+<div class="p-head">
+	<div class="header clearfix"> 
+		<div class="f-header-left">
+			<h1>开发商工作台</h1>
+			<div class="f-company-select drop-item">
+				<p>北京万科股份科技有限公司公司</p>
+				<div class="head-drop-list">
+					<ul> 
+						<li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+						<li><a href="#">北京万科股份科技有限公司公司</a></li>
+						<li><a href="#">北京万科股份科技有限公司公司</a></li>
+						<li><a href="#">北京万科股份科技有限公司公司</a></li>
+						<li><a href="#">北京万科股份科技有限公司公司</a></li>
+						<li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="headerr">
+			<div class="user-select drop-item">
+				<p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+				<div class="head-drop-list">
+					<ul> 
+						<li><a href="#">个人资料</a></li>
+						<li><a href="#">管理我的企业</a></li>
+						<li><a href="#">退出登录</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="userpic"> 
+				<a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a>
+			</div>
+			<div class="header-item drop-item">
+				<span class="money">费用</span>
+				<div class="head-drop-list">
+					<ul> 
+						<li><a href="#">充值</a></li>
+						<li><a href="#">订单</a></li>
+						<li><a href="#">余额</a></li>
+						<li><a href="#">进入财产中心</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="header-item">
+				<span>全部产品</span>
+			</div>
+		</div> 
+	</div>
+</div> 
+<!-- constart -->
+<div class="p-con">
+	<div class="sub-menu">
+		<h3>广告</h3>
+		<ul>
+			<li class="sub-menu-a">
+				<a class="no-sub" href="#">首页</a>
+			</li>
+			<li  class="sub-menu-a">
+				<a class="open" href="#">账户管理</a>
+				<ul class="sub-menu-b" style="display: block;">
+					<li><a href="#">基本信息</a></li>
+					<li><a class="open" href="#">身份认证</a></li>
+					<li><a href="#">管理员信息</a></li>
+				</ul>
+			</li>
+			<li  class="sub-menu-a">
+				<a href="#">产品商城</a>
+				<ul class="sub-menu-b" style="display: none;">
+					<li><a href="#">基本信息</a></li>
+					<li><a href="#">身份认证</a></li>
+					<li><a href="#">管理员信息</a></li>
+					<li><a href="#">管理员信息</a></li>
+					<li><a href="#">管理员信息</a></li>
+					<li><a href="#">管理员信息</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="menu-switch" id="menu-switch"></div>
+
+	<div class="p-main">
+		<div class="c-row">
+			<div class="tab-nav clearfix">
+				<ul>
+					<li class="active">企业认证</li>
+				</ul>
+			</div>
+			<div class="alert">
+				您的资质信息未通过审核，原因：公司名称与营业执照不符。
+			</div>
+			<div class="table-form">
+				<table>
+					<tr>
+						<th>公司名称：</th>
+						<td><input type="text" class="inpstyle error" placeholder="请填写公司名称">
+							<div class="error-txt">请填写公司名称</div>
+						</td>
+					</tr>
+					<tr>
+						<th>注册地：</th>
+						<td> 
+							<div class="form-item">
+								<div class="select">
+									<input onclick="document.getElementsByClassName('select')[0].className ='select select-open'" type="text" class="inpstyle" placeholder="请选择省份" readonly="redonly"><span class="drop-arr"></span>
+									<div class="select-dropdown">
+										<ul>
+											<li>北京</li>
+											<li>上海</li>
+											<li>石家庄</li> 
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="form-item">
+									<div class="select">
+										<input type="text" class="inpstyle" placeholder="请选择省份" readonly="redonly"><span class="drop-arr"></span>
+										<div class="select-dropdown">
+											<ul>
+												<li>北京</li>
+												<li>上海</li>
+												<li>石家庄</li> 
+											</ul>
+										</div>
+									</div>
+							</div>
+								
+						</td>
+					</tr>
+					<tr>
+						<th>联系人姓名：</th>
+						<td><input type="text" class="inpstyle" placeholder="请填写联系人姓名"></td>
+					</tr>
+					<tr>
+						<th>联系人电话：</th>
+						<td><input type="text" class="inpstyle" placeholder="请填写联系人电话"></td>
+					</tr>
+					<tr>
+						<th>营业执照：</th>
+						<td>
+							<button class="btn"><span class="up-ico"></span>上传图片</button>
+							<div class="upload-list">
+								<li>
+									<img src="http://cdnsfb.soufunimg.com/viewimage/1/2017_7/1/M10/48/850fbf69e0344f65be5c3432a3edc3e9/220x165c.jpg" alt="">
+									<span class="del-icon">del</span>
+								</li>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>ICP备案证明：</th>
+						<td>
+								<button class="btn"><span class="up-ico"></span>上传图片</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="foot-btn">
+				<button class="btn btn-submit">保存</button><button class="btn">取消</button>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<!-- conend -->
+
+</body>
+<script src="assets/js/layout.js"></script>
+</html>	

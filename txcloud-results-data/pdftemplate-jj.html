@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>pdf模板</title>
+	<style>
+		*{margin:0; padding:0;}
+		body{font-family: "arial","Microsoft YaHei";width: 1240px;  margin: 0 auto;background: #f4f4f4; }
+		.pdflogo{margin: 100px 0 0 49px;}
+		.pdfbox{ padding: 0 45px;height: 1750px; position: relative; overflow: hidden;}
+		.titleInfo{color: #545b77; margin: 400px 0 300px 49px; color: #fff;}
+		.titleInfo h1{font-size:90px; }
+		.titleInfo p{font-size: 30px; margin-top: 20px;}
+		.nameInfo{margin-left:49px; font-size: 20px; color: #333; line-height: 28px; color: #fff;}
+		.nameInfo span{width: 22px; height: 22px; display: inline-block; overflow: hidden; background: url(assets/images/pdf/icon.png) no-repeat 0 0;    vertical-align: -2px;margin-right: 12px;}
+		.nameInfo .pdficon-mail{background-position:0 -46px;}
+		.nameInfo .pdficon-tel{background-position:0 -95px;}
+		.nameInfo p{margin:5px 0;}
+		.pdfTit{padding: 0 32px; margin:40px 0 20px 0; font-size: 20px; height: 44px; line-height: 44px; color: #fff; background:#414f6b; display: inline-block;}
+		.padIndex{background: url(assets/images/pdf/pdf-bg.jpg) no-repeat 0 0; background-size: cover}
+		.pdfFoot{position: absolute; bottom: 0; left: 0; right: 0; height: 89px; color: #595e69; font-size: 28px; line-height: 89px; background:#2f3644 url(assets/images/pdflogo.jpg) no-repeat 30px center;}
+		.pdfFootRight{float: right; padding-right: 30px;}
+		
+		.pdftxt{font-size: 18px; padding: 28px; background: #e9e9ec;}
+		.pdftxt h3{font-weight: bold; margin-bottom: 10px;}
+		.pdftxt p{line-height: 38px;}
+		.color-red{color:#e24242; }
+		.pdftable{text-align: center; font-size: 16px; line-height: 28px; width: 100%; border-collapse: collapse;}
+		.pdftable th{background: #f9f9f9; padding: 8px; border: 1px solid #ececec; font-weight: normal;}
+		.pdftable td{border: 1px solid #ececec; background: #fdfdfd; padding: 8px;}
+
+		/*家居封面*/
+		.pdf-jj{background-image: url(assets/images/pdf/pdf-bg-jj.jpg);}
+		.pdf-jj .nameInfo{margin-left: -45px; background: url(assets/images/pdf/jjbg.png) no-repeat 0 0; background-size: cover;     padding: 30px 94px;}
+
+
+	</style>
+</head>
+<body>
+	<div class="pdfbox padIndex pdf-jj">
+		<img class="pdflogo" src="assets/images/pdf/logo-f.png" alt="">
+		<div class="titleInfo">
+			<h1>北京泥巴公社装饰工程有限公司</h1>
+			<p>天下云服务报告 2017.09.01-2017.09.30</p>
+		</div>
+		<div class="nameInfo">
+			<p><span class="pdficon-name"></span>房天下客户经理：某某某</p>
+			<p><span class="pdficon-mail"></span>Mail：xxx@fang.com</p>
+			<p><span class="pdficon-tel"></span>Tel：18712345678</p>
+		</div>
+	</div>
+	<div class="pdfbox">
+		<div class="pdfTit">一、线索监控</div>
+		
+		<div class="pdftxt">
+			<h3>分析：</h3>
+			<p>天下云600版已服务15天，剩余服务期15天。合作期间累计分发线索331条，日均分发22条，合作优势明显。
+线索量分发最高的日期为11月16日（<span class="color-red">35条</span>）、11月14日（33条）、11月22日（32条），期间可能有活动推广、运营支持，可结合实际情况提升线索量。</p>
+		</div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<table class="pdftable">
+			<tr>
+				<th>线索类型</th>
+				<th>分发数</th>
+				<th>联系数</th>
+				<th>联系率</th>
+				<th>接通率</th>
+				<th>接通率</th>
+			</tr>
+			<tr>
+				<td>400电话</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+			</tr>
+			<tr>
+				<td>客户报名</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+			</tr>
+			<tr>
+				<td>精准潜客</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+				<td>200</td>
+			</tr>
+		</table>
+<div class="pdfFoot">
+			<div class="pdfFootRight">www.fang.com</div>
+		</div>
+	</div>
+</body>
+</html>	

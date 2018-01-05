@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>发票-索取发票</title>
+	<link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+	<link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="assets/css/layout.css"> 
+    <link rel="stylesheet" href="assets/css/style.css">  
+    	<script src="assets/js/jquery-1.8.2.min.js"></script>
+        <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/bootstrap-datetimepicker.css">
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+
+</head>
+<body class="p-sidebar-closed">
+<div class="p-sidebar">
+	<div class="logo"><a href="tianxiacloud"></a></div>
+	<div class="side-bar-coll"><span></span></div>
+	<ul class="p-sidebar-menu clearfix">
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60c;</i></span>
+				<span class="title">首页</span>
+			</a>
+		</li>
+		<li class="open">
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe609;</i></span>
+				<span class="title">天下云</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60a;</i></span>
+				<span class="title">广告</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe604;</i></span>
+				<span class="title">电商</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<span class="box-ico"><i class="ico">&#xe60b;</i></span>
+				<span class="title">更多</span>
+			</a>
+		</li> 
+	</ul> 
+</div>
+    <div class="p-head">
+        <div class="header clearfix">
+            <div class="f-header-left">
+                <h1>开发商工作台</h1>
+                <div class="f-company-select drop-item">
+                    <p>北京万科股份科技有限公司公司</p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                            <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="headerr">
+                <div class="user-select drop-item">
+                    <p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="account-manage.html">账号管理</a></li>
+                            <li><a href="account-manage-person.html">账号管理-个人</a></li>
+                            <li><a href="account-authenticate.html">资质管理</a></li>
+                            <li><a href="account-authenticate-person-new.html">资质管理-个人</a></li>
+                            <li><a href="account-project-list.html">项目管理</a></li>
+                            <li><a href="account-per-manage.html">人员管理</a></li>
+                            <li><a href="account-role-manage.html">角色管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="userpic">
+                    <a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="money">费用</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="asset-pandect-manage.html">财产总览</a></li>
+                            <li><a href="asset-balance-manage.html">余额管理</a></li>
+                            <li><a href="asset-fangcoin-manage.html">房币管理</a></li>
+                            <li><a href="asset-redpacket-manage.html">红包管理</a></li>
+                            <li><a href="asset-order-manage.html">订单管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-item">
+                    <span>全部产品</span>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="project">项目切换</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- constart -->
+<div class="p-con">
+	<div class="sub-menu">
+        <h3>发票</h3>
+        <ul>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-edit.html">申请发票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-edit-per.html">申请发票-个人</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-list.html">发票列表</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-back.html">发票列表-退票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-addr.html">寄送地址管理</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-demand-list.html">索取发票</a>
+            </li>
+            <li class="sub-menu-a">
+                <a class="no-sub" href="invoice-demand-choice.html">索取发票-发票性质选择</a>
+            </li>
+        </ul>
+    </div>
+	<div class="menu-switch" id="menu-switch"></div>
+
+<div class="p-main">
+	<div class="c-row">
+		<div class="tab-nav clearfix">
+			<ul>
+				<li class="active">可开订单列表</li>
+			</ul>
+		</div>
+		<div class="f-search-wrap clearfix"> 
+                <div class="f-g">
+                    <label>下单时间：</label>
+                    <input class="inpstyle form_datetime" placeholder="2017-09-08" type="text">&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;<input class="inpstyle form_datetime" placeholder="2017-09-08" type="text">
+                </div> 
+                <div class="f-g">
+                    <label>产品类型：</label>
+                    <input class="inpstyle" type="text">
+                </div> 
+                <div class="f-g">
+                    <a class="btn btn-submit f-search"><span class="btnico-search"></span>查询</a>
+                </div>
+        </div>
+
+		<div class="invoice-demand-info clearfix">
+			<div class="fl">
+				<p>已选总金额：<strong>￥2500.00</strong></p>
+				<p>（可开票总金额：￥2388.00）</p>
+			</div>
+			<div class="fr">
+				<div class="fr">
+					<a href="#" class="btn btn-submit">索取发票</a>
+				</div>
+				<div class="fr">
+					<p>待开票金额：<strong class="color-red">￥2500.00</strong></p>
+					<p>（待开票金额=已选总金额：￥2500.00-欠票金额：￥0.00）</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="tableWrap">
+                    <table class="f-table-list">
+                        <thead>
+                            <tr>
+                                <th width="15"><label class="f-check"><span></span></label></th>
+                                <th>订单编号</th>
+                                <th>产品类型</th>
+                                <th>购买协议签约公司</th>
+                                <th>订单金额</th>
+                                <th>可开票金额</th>
+                                <th>下单时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            	<td><label class="f-check"><span></span></label></td>
+                                <td>1111111</td>
+                                <td>天下云</td>
+                                <td>二手房</td>
+                                <td>222.00</td>
+                                <td><span class="color-red">+1000.91</span></td>
+                                <td>2015-12-54</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="f-page-box clearfix">
+                    <div class="f-page">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&gt;</a></li>
+                            <li><a href="#">末页</a></li>
+                            <li class="f-page-t">共76页/共752条</li>
+                            <li>转到<input type="text"><a href="javascript:;" class="f-page-submit">确定</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+	</div>
+	</div></div>
+
+<div class="mask">
+    <div class="layer layer-small" style="">
+        <div class="layer-top">提示<span class="layer-x"></span></div>
+        <div class="layer-body">
+             <br>
+             <p class="font14">请先填写发票信息，再提交开票申请。</p>
+             <br>
+        </div>
+        <div class="layer-foot">
+            <button class="btn btn-submit">确认</button>
+            <button class="btn">取消</button>
+        </div>
+    </div>
+</div>
+</body>
+<script src="assets/js/layout.js"></script>
+ <script>
+    $(".form_datetime").datetimepicker({
+        language:'zh-CN',
+         // 选择年-月-日
+        minView : "month",//设置只显示到月份
+        format : "yyyy-mm-dd",//日期格式
+        autoclose : true//选中关闭
+    });
+
+$(function(){
+    $(".layer-x").click(function(){
+        $(".mask").hide();
+        $(".layer").hide();
+    })
+})
+
+
+</script>    
+</html>	

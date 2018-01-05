@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>电商-效果数据</title>
+        <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">  <!--公共基础样式需引用 -->                                         
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/layout.css?v=20171123"> <!--头部和左边菜单公共样式可不引用 -->
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> <!--头部和左边菜单字体样式只需头部和左侧引用 -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1127">  <!--***当前页面样式必须引用,更改有缓存需加版本号 -->   
+    <script src="assets/js/jquery-1.8.2.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.7.2/echarts.min.js"></script>
+</head>
+
+<body class="p-sidebar-closed">
+    <div class="p-sidebar">
+        <div class="logo"><a href="tianxiacloud"></a></div>
+        <div class="side-bar-coll"><span></span></div>
+        <ul class="p-sidebar-menu clearfix">
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60c;</i></span> <span class="title">首页</span> </a> </li> 
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe609;</i></span> <span class="title">天下云</span> </a> </li>
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60a;</i></span> <span class="title">广告</span> </a> </li>
+            <li class="open"> <a href="#"> <span class="box-ico"><i class="ico">&#xe604;</i></span> <span class="title">电商</span> </a> </li>
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60b;</i></span> <span class="title">更多</span> </a> </li>
+        </ul>
+    </div>
+    <div class="p-head">
+        <div class="header clearfix">
+            <div class="headerr">
+                <div class="user-select drop-item">
+                    <p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">个人资料</a></li>
+                            <li><a href="#">管理我的企业</a></li>
+                            <li><a href="#">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="userpic"> <a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a> </div>
+                <div class="header-item drop-item"> <span class="money">费用</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">充值</a></li>
+                            <li><a href="#">订单</a></li>
+                            <li><a href="#">余额</a></li>
+                            <li><a href="#">进入财产中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-item"> <span>全部产品</span> </div>
+            </div>
+        </div>
+    </div>
+    <!-- constart -->
+    <div class="p-con">
+        <div class="sub-menu">
+            <h3>广告</h3>
+            <ul>
+                <li class="sub-menu-a"> <a class="open" href="#">效果监控</a>
+                    <ul class="sub-menu-b" style="display: block;">
+                        <li><a href="advertis-data-monitor.html" class ="open">广告监控</a></li>
+                        <li><a href="advertis-data-result.html">效果数据</a></li>
+                        <li><a href="advertis-data-consumer.html">用户分析</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-switch" id="menu-switch"></div>
+        <div class="p-main">
+            <div class="c-row">
+                <div class="tab-nav clearfix">
+                    <ul>
+                        <li class="active">广告监控</li>
+                    </ul>
+                    <div class="tools"><a class="export" href="#">导出服务报告</a>                        
+                    </div>
+                </div>
+                <div class="topHouseInfo buildinfo clearfix">
+                    <h3 class="fl">荣安诚品园<div class="changeProject">
+                <div class="changeProjectTxt" onclick="document.getElementsByClassName('changeProject')[0].className='changeProject changeProjectOn'">切换项目<span></span></div>
+                <div class="changeProjectList">
+                    <ul>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                        <li>公园一号</li>
+                    </ul>
+                </div>
+            </div>
+            </h3> 
+                <div class="chosentime fl">                    
+                        选择合作时间：
+                        <div class="select">
+                            <input onclick="document.getElementsByClassName('select')[0].className ='select select-open';document.getElementsByClassName('select-dropdown')[0].style.display='block'" value="2017-09-01 - 2017-11-06" class="inpstyle" placeholder="" readonly="redonly" type="text">
+                            <span class="drop-arr"></span>
+                            <div class="select-dropdown">
+                                <ul>
+                                    <li>2017-09-01 - 2017-11-06</li>
+                                    <li>2017-09-01 - 2017-11-06</li>
+                                    <li>2017-09-01 - 2017-11-06</li>
+                                </ul>
+                            </div>
+                        </div>
+                 </div>                  
+                </div>
+                <div class="chart-box clearfix">
+                    <div class="chart-box-title clearfix">
+                            <h3>趋势图</h3>
+                    </div>                
+                    <div class="balance-wrap clearfix" style="border:0;margin:4px 0 0 0;">                    
+                        <dl>
+                            <dt>本次合作天数</dt>
+                            <dd>2698.62</dd>
+                        </dl>
+                        <dl>
+                            <dt>覆盖广告位</dt>
+                            <dd>19652.30</dd>
+                        </dl>
+                        <dl>
+                            <dt>剩余广告展示天数</dt>
+                            <dd>16023.50</dd>
+                        </dl>                    
+                    </div>
+                </div>
+                <div class="chart-box02 clearfix">
+                    <div class="chart-box-title02">
+                        <h3>广告排期</h3>
+                    </div>                     
+                </div>
+                <div class="dy_mymain clearfix">                    
+                    <table id="tb20176" cellspacing="0" cellpadding="0">
+                        <tbody><tr>
+                          <th rowspan="3" class="">页面/频道</th>
+                          <th rowspan="3" class="">形式</th>
+                          <th rowspan="3" class="">数量</th>
+                          <th colspan="31" class="">2017年6月</th>
+                        </tr>
+                        <tr>
+                          <th class="">1</th>
+                          <th class="">2</th>
+                          <th class=" dy_red">3</th>
+                          <th class=" dy_red">4</th>
+                          <th class="">5</th>
+                          <th class="">6</th>
+                          <th class="">7</th>
+                          <th class="">8</th>
+                          <th class="">9</th>
+                          <th class=" dy_red">10</th>
+                          <th class=" dy_red">11</th>
+                          <th class="">12</th>
+                          <th class="">13</th>
+                          <th class="">14</th>
+                          <th class="">15</th>
+                          <th class="">16</th>
+                          <th class=" dy_red">17</th>
+                          <th class=" dy_red">18</th>
+                          <th class="">19</th>
+                          <th class="">20</th>
+                          <th class="">21</th>
+                          <th class="">22</th>
+                          <th class="">23</th>
+                          <th class=" dy_red">24</th>
+                          <th class=" dy_red">25</th>
+                          <th class="">26</th>
+                          <th class="">27</th>
+                          <th class="">28</th>
+                          <th class="">29</th>
+                          <th class="">30</th>
+                          <th class="">31</th>
+                        </tr>
+                        <tr>
+                          <th class="">四</th>
+                          <th class="">五</th>
+                          <th class=" dy_red">六</th>
+                          <th class=" dy_red">日</th>
+                          <th class="">一</th>
+                          <th class="">二</th>
+                          <th class="">三</th>
+                          <th class="">四</th>
+                          <th class="">五</th>
+                          <th class=" dy_red">六</th>
+                          <th class=" dy_red">日</th>
+                          <th class="">一</th>
+                          <th class="">二</th>
+                          <th class="">三</th>
+                          <th class="">四</th>
+                          <th class="">五</th>
+                          <th class=" dy_red">六</th>
+                          <th class=" dy_red">日</th>
+                          <th class="">一</th>
+                          <th class="">二</th>
+                          <th class="">三</th>
+                          <th class="">四</th>
+                          <th class="">五</th>
+                          <th class=" dy_red">六</th>
+                          <th class=" dy_red">日</th>
+                          <th class="">一</th>
+                          <th class="">二</th>
+                          <th class="">三</th>
+                          <th class="">四</th>
+                          <th class="">五</th>
+                          <th class="">六
+                        </th></tr>
+                        <tr>
+                          <td>14-9新房地图页</td>
+                          <td>总网首页新增广告位图片</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="orangebg"></td>
+                          <td class="orangebg"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="redbg"></td>
+                          <td class="redbg"></td>
+                          <td class="redbg"></td>
+                          <td class="redbg"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="graybg"></td>
+                          <td class="graybg"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>资讯详情页</td>
+                          <td>黄金眼自定义黄金眼自定义黄</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="greenbg"></td>
+                          <td class="greenbg"></td>
+                          <td class="graybg"></td>
+                          <td class="graybg"></td>
+                          <td class="graybg"></td>
+                          <td class="redbg"></td>
+                          <td class="redbg"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="redbg"></td>
+                          <td class="redbg"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>                    
+                      </tbody>
+                    </table>
+                </div>
+                <div class="adtip">
+                    <div class="schedule_note">
+                        <ul>
+                            <li><span class="graybg_list"></span>已确定排期</li>
+                            <li><span class="orangebg_list"></span>他人预约但未确定的排期</li>
+                            <li><span class="redbg_list"></span>自己预约但被他人确定并占用的排期</li>
+                            <li><span class="greenbg_list"></span>当前选定的排期</li>                          
+                        </ul>
+                    </div>
+                </div>
+                <div class="chart-box02 mt10 clearfix">
+                    <div class="chart-box-title02 clearfix">
+                        <h3>投放查阅</h3>
+                    </div>                    
+                </div>
+                    <table class="f-table-list">
+                        <thead>
+                            <tr>
+                                <th width="20%">日期</th>
+                                <th width="20%">广告位</th>
+                                <th width="20%">素材链接</th>
+                                <th width="20%">页面截屏</th>
+                                <th width="20%">页面地址</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2017.09.19</td>
+                                <td>PC-首页-全景视窗</td>
+                                <td><a class="link-a" href="javascript:;">1.jpg</a></td>
+                                <td><a class="link-a" href="javascript:;" id="adimg">点击查看</a></td>
+                                <td>www.fang.com</td>
+                            </tr>
+                            <tr>
+                                <td>2017.09.19</td>
+                                <td>PC-首页-全景视窗</td>
+                                <td><a class="link-a" href="javascript:;">1.jpg</a></td>
+                                <td><a class="link-a" href="javascript:;" id="adimg">点击查看</a></td>
+                                <td>www.fang.com</td>
+                            </tr>
+                            <tr>
+                                <td>2017.09.19</td>
+                                <td>PC-首页-全景视窗</td>
+                                <td><a class="link-a" href="javascript:;">1.jpg</a></td>
+                                <td><a class="link-a" href="javascript:;" id="adimg">点击查看</a></td>
+                                <td>www.fang.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div class="f-page-box clearfix">
+                    <div class="f-page">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&gt;</a></li>
+                            <li><a href="#">末页</a></li>
+                            <li class="f-page-t">共76页/共752条</li>
+                            <li>转到<input type="text"><button>确定</button></li>
+                        </ul>
+                    </div>
+                </div>                 
+            </div>
+        </div>
+        <!-- conend -->
+        <div class="mask" id="mask" style="display:none"></div>    
+        <div class="bigpiclayer" id="bigpiclayer">    
+            <div class="bigpic" id="bigpic"><img src="assets/images/adbigimg01.jpg"><a class="closed" href="javascript:void(0);"></a></div>   
+        </div>
+</body>
+<script src="assets/js/layout.js"></script>
+
+</html>
+<script>
+// 视图大小变化图表重绘
+window.onresize = function() { 
+	myChart.resize();
+	myChart1.resize();
+}
+$("#menu-switch").bind("click", function(){
+    var t= setTimeout(function(){
+        myChart.resize();
+        myChart1.resize();
+        clearTimeout(t)
+    },200) 
+})
+</script>
+<script type="text/javascript">
+      $("#adimg").click(function(){
+      $("#mask").toggle(500);
+      $("#bigpiclayer").toggle(500);
+       });    
+    function closed(){
+        document.getElementById("bigpiclayer").style.display="none"
+        document.getElementById("mark").style.display="none"
+        };
+        
+        $(document).ready(function () {
+            //关闭所有new-layer弹窗
+            $(".closed").click(function () {
+                $(".bigpiclayer").hide(500);
+                $(".mark").hide(500);
+            });
+        });     
+  </script>

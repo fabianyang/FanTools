@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>天下云-未购买页</title>
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/layout.css?v=1024"> 
+    <link rel="stylesheet" href="assets/css/style.css">  
+    <script src="assets/js/jquery-1.8.2.min.js"></script>
+</head>
+
+<body class="p-sidebar-closed">
+    <div class="p-sidebar">
+        <div class="logo"><a href="tianxiacloud"></a></div>
+        <div class="side-bar-coll"><span></span></div>
+        <ul class="p-sidebar-menu clearfix">
+             <li class="">
+                <a href="#">
+                <span class="box-ico"><i class="ico">&#xe609;</i></span>
+                <span class="title">首页</span>
+            </a>
+            </li>
+            <li class="open">
+                <a href="#">
+				<span class="box-ico"><i class="ico">&#xe609;</i></span>
+				<span class="title">天下云</span>
+			</a>
+            </li>
+            <li>
+                <a href="#">
+				<span class="box-ico"><i class="ico">&#xe60a;</i></span>
+				<span class="title">广告</span>
+			</a>
+            </li>
+            <li>
+                <a href="#">
+				<span class="box-ico"><i class="ico">&#xe603;</i></span>
+				<span class="title">电商</span>
+			</a>
+            </li>
+            <li>
+                <a href="#">
+				<span class="box-ico"><i class="ico">&#xe606;</i></span>
+				<span class="title">更多</span>
+			</a>
+            </li>
+        </ul>
+    </div>
+    <div class="p-head">
+        <div class="header clearfix">
+        <div class="f-header-left">
+            <h1>开发商工作台</h1>
+            <div class="f-company-select drop-item">
+                <p>北京万科股份科技有限公司公司</p>
+                <div class="head-drop-list">
+                    <ul> 
+                        <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                        <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                        <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                        <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                        <li><a href="#">北京万科股份科技有限公司公司</a></li>
+                        <li><a href="#">北京万科股份科技有限公司公司北京万科股份科技有限公司公司</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="headerr">
+                <div class="user-select drop-item">
+                    <p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">个人资料</a></li>
+                            <li><a href="#">管理我的企业</a></li>
+                            <li><a href="#">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="userpic">
+                    <a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="money">费用</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">充值</a></li>
+                            <li><a href="#">订单</a></li>
+                            <li><a href="#">余额</a></li>
+                            <li><a href="#">进入财产中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-item">
+                    <span>全部产品</span>
+                </div>
+                <div class="header-item drop-item">
+                    <span class="project">项目切换</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                            <li><a href="#">项目1</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页面主内容start -->
+    <div class="p-con" style="padding-bottom: 0;">
+        
+         <iframe  src="iframe-notbuy.html" frameborder="0" width="100%" height="100%"></iframe>
+        
+    </div> 
+    <!-- 页面主内容end --> 
+       
+     
+        
+</body>
+</html>
+<script>
+function setIframeHeight(){
+     var windh = $(window).height();
+     $('iframe').css('height',windh-105+'px');
+}
+setIframeHeight()
+$(window).resize(function(){
+    setIframeHeight()
+})
+</script>

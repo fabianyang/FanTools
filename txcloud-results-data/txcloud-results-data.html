@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>天下云效果数据</title>
+    <link rel="stylesheet" href="assets/css/basc.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2017120406"> <!--***样式表修改需要清除缓存更新版本号 -->   
+    <link rel="stylesheet" href="assets/css/fontStyle.css">
+    <script src="assets/js/jquery-1.8.2.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.7.2/echarts.min.js"></script>
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/bootstrap-datetimepicker.css"><!--时间控件样式文件 -->
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/bootstrap-datetimepicker.min.js"></script><!--时间控件脚本文件 -->
+</head>
+
+<body class="p-sidebar-closed">
+    <div class="p-sidebar">
+        <div class="logo"><a href="tianxiacloud"></a></div>
+        <div class="side-bar-coll"><span></span></div>
+        <ul class="p-sidebar-menu clearfix">
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60c;</i></span> <span class="title">首页</span> </a> </li> 
+            <li class="open"> <a href="#"> <span class="box-ico"><i class="ico">&#xe609;</i></span> <span class="title">天下云</span> </a> </li>
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60a;</i></span> <span class="title">广告</span> </a> </li>
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe604;</i></span> <span class="title">电商</span> </a> </li>
+            <li> <a href="#"> <span class="box-ico"><i class="ico">&#xe60b;</i></span> <span class="title">更多</span> </a> </li>
+        </ul>
+    </div>
+    <div class="p-head">
+        <div class="header clearfix">
+            <div class="headerr">
+                <div class="user-select drop-item">
+                    <p>王朝阳王朝阳王朝阳[wangchaoyang] </p>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">个人资料</a></li>
+                            <li><a href="#">管理我的企业</a></li>
+                            <li><a href="#">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="userpic"> <a href="#"><img src="http://img1.soufunimg.com/usercenter/2016_08/08/15/avatar/120_160527493_78.jpg"/></a> </div>
+                <div class="header-item drop-item"> <span class="money">费用</span>
+                    <div class="head-drop-list">
+                        <ul>
+                            <li><a href="#">充值</a></li>
+                            <li><a href="#">订单</a></li>
+                            <li><a href="#">余额</a></li>
+                            <li><a href="#">进入财产中心</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-item"> <span>全部产品</span> </div>
+            </div>
+        </div>
+    </div>
+    <!-- constart -->
+    <div class="p-con">
+        <div class="sub-menu">
+            <h3>天下云</h3>
+            <ul>
+                <li class="sub-menu-a"> <a class="no-sub open" href="txcloud-results-data.html">效果数据</a> </li>
+            </ul>
+        </div>
+        <div class="menu-switch" id="menu-switch"></div>
+        <div class="p-main">
+            <div class="c-row">
+                <!-- <div class="tab-nav clearfix">
+                    <ul>
+                        <li class="active">效果数据</li>
+                    </ul>
+                    <div class="tools"><a class="export" href="#">导出服务报告</a>
+                    </div>
+                </div> -->
+                <div class="topHouseInfo buildinfo">
+                    <h3>联投龙湾
+                        <div class="changeProject">
+                            <div class="changeProjectTxt">切换项目<span></span>
+                                <div class="changeProjectList">
+                                    <ul>
+                                        <li>联投龙湾</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h3>
+                    <div class="topHouseInfo-ad"><span>天下云600版</span>：2017-09-28 至 2017-11-28
+                            <div class="changeProject">
+                            <div class="changeProjectTxt">切换订单<span></span>
+                                <div class="changeProjectList">
+                                    <ul>
+                                        <li>联投龙湾</li>
+                                        <li>祥源·玖悦湾项目</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="topHouseInfoRight">
+                            <!--**hi 为了布局。下面这些标签尽量之间不要留空格 ^_^**-->                            
+                            <span class="exportPDF">导出服务报告</span>时间段：<input name="" type="text" placeholder="2017-09-01" class="inpstyle form_datetime"><i class="tiemlinec">-</i><input name="" type="text" placeholder="2017-09-30" class="inpstyle form_datetime"><a href="javascript:;" class="btn btn-blue">确定</a>
+                    </div>
+                    <script>
+                        $(".changeProjectTxt").on("click",function(){
+                            $(this).toggleClass("changeProjectOn")
+                        })
+
+                        $(".form_datetime").datetimepicker({
+                            language:'zh-CN',
+                             // 选择年-月-日
+                            pickerPosition:'bottom-left',
+                            minView : "month",//设置只显示到月份
+                            format : "yyyy-mm-dd",//日期格式
+                            autoclose : true//选中关闭
+                        });
+
+                    </script>
+                </div>
+         
+                <div class="chart-box clearfix">
+                    <div class="chart-box-title clearfix">
+                        <h3>线索监控</h3>
+                        <span class="rel tip"> <img src="assets/images/help_icon.png">
+        <div class="ico-layer" style="display: none;">
+          <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+        </div>
+        </span>
+                        <div class="periodtime">时间段：
+                            <input name="" type="text" placeholder="2017-09-01" class="inpstyle"> -
+                            <input name="" type="text" placeholder="2017-09-30" class="inpstyle">
+                        </div>
+                    </div>
+                    <div class="chart-box-con">
+                        <div id="clueMonitor" style="height: 300px;"></div>
+                        <script>
+                        //线索监控
+                        function clueMonitor() {
+                            var myChart = echarts.init(document.getElementById('clueMonitor'));
+                            option = {
+                                color: ['#32cff1', '#ffc644', '#fe7984'],
+                                title: {
+                                    show: false,
+                                    text: '线索监控'
+                                },
+                                grid: {
+                                    top: 20,
+                                    left: 66,
+                                    right: 56
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'cross',
+                                        lineStyle: { color: '#b5bcc9', type: 'solid' },
+                                        crossStyle: { color: '#b5bcc9', type: 'solid' },
+                                        label: {
+                                            backgroundColor: '#6a7985'
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    bottom: '0',
+                                    itemGap: 30,
+                                    inactiveColor: "#999",
+                                    textStyle: { color: "#666" },
+                                    itemHeight: 10,
+                                    data: ['分发', '联系', '接通']
+                                },
+                                xAxis: [{
+                                        type: 'category',
+                                        boundaryGap: false,
+                                        data: ['10.08', '10.09', '10.10', '10.11', '10.12', '10.13', '10.14'],
+                                        splitLine: {
+                                            show: false,
+                                            lineStyle: { color: ['#f6f6f9'] }
+                                        },
+                                        axisLine: {
+                                            lineStyle: {
+                                                color: "#d6dae1"
+                                            }
+                                        },
+                                        axisTick: {
+                                            axisTick: {
+                                                lineStyle: "#d6dae1"
+                                            }
+                                        }
+                                    }
+
+                                ],
+                                yAxis: [{
+                                    type: 'value',
+                                    splitLine: {
+                                        show: true,
+                                        lineStyle: { color: ['#f6f6f9'] }
+                                    },
+                                    axisLine: {
+                                        lineStyle: {
+                                            color: "#d6dae1"
+                                        }
+                                    },
+                                    axisTick: {
+                                        axisTick: {
+                                            lineStyle: "#d6dae1"
+                                        }
+                                    }
+                                }],
+                                series: [{
+                                        name: '分发',
+                                        type: 'line',
+                                        lineStyle: { normal: { width: 2 } },
+                                        symbolSize: 7,
+                                        data: [120, 132, 101, 134, 90, 230, 210]
+                                    },
+                                    {
+                                        name: '联系',
+                                        type: 'line',
+                                        symbolSize: 7,
+                                        lineStyle: { normal: { width: 2 } },
+                                        data: [220, 182, 191, 234, 290, 330, 310]
+                                    },
+                                    {
+                                        name: '接通',
+                                        type: 'line',
+                                        symbolSize: 7,
+                                        lineStyle: { normal: { width: 2 } },
+                                        data: [150, 232, 201, 154, 190, 330, 410]
+                                    }
+                                ],
+                                textStyle: {
+                                    color: "#666",
+                                    fontWdith: "normal"
+                                }
+                            };
+                            myChart.setOption(option);
+                        }
+                        clueMonitor()
+                        </script>
+                    </div>
+                </div>
+                <div class="responsive-chartbox clearfix">
+                    <div class="chart-box chart-box-l clearfix">
+                        <div class="chart-box-title clearfix">
+                            <h3>线索统计</h3>
+                            <span class="rel tip"> <img src="assets/images/help_icon.png">
+        <div class="ico-layer" style="display: none;">
+          <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+        </div>
+        </span>
+                        </div>
+                        <div class="chart-box-con">
+                            <div id="clueCount" style="height: 230px;"></div>
+                            <div class="chart-right-txt" style="width: 236px;">
+                                <dl>
+                                    <dt>
+                                        <label>已分发</label>159</dt>
+                                    <dd>
+                                        <label>已联系</label>159</dd>
+                                    <dd>
+                                        <label>联系率</label>100.00%</dd>
+                                    <dd>
+                                        <label>已接通</label>159</dd>
+                                    <dd>
+                                        <label>接通率</label>80%</dd>
+                                </dl>
+                            </div>
+                            <script>
+                            //线索统计
+                            function clueCount() {
+                                var myChart = echarts.init(document.getElementById('clueCount'));
+                                var percentage = [0.58, 0.22, 0.16];
+                                var radius = [0.78];
+                                for (var i = 1; i < percentage.length; ++i) {
+                                    radius.push(radius[0] / Math.sqrt(percentage[0] / percentage[i]));
+                                }
+                                var colors = ['#ffcfd3', '#fea8af', '#fe7984'];
+                                var labels = ['已分发', '已联系', '已接通'];
+                                var top = 0.5;
+
+                                var series = [];
+                                for (var i = 0; i < percentage.length; ++i) {
+                                    series.push({
+                                        type: 'pie',
+                                        silent: true, 
+                                        name: labels[percentage.length - i - 1],
+                                        radius: [0, radius[i] * 100 + '%'],
+                                        label: {
+                                            normal: {
+                                                show: false,
+                                                color: '#fff'
+                                            }
+                                        },
+                                        color: [colors[i]],
+                                        center: ['33.3333%', (top + (-radius[i] + radius[0]) / 2) * 100 - 4 + '%'],
+                                        data: [{
+                                            value: 1,
+                                            itemStyle: {
+                                                normal: {
+                                                    color: colors[i]
+                                                }
+                                            }
+                                        }],
+                                        animationType: 'scale'
+                                    });
+                                }
+                                myChart.setOption({
+                                    legend: {
+                                        data: labels,
+                                        orient: 'horizontal',
+                                        bottom: 0,
+                                        itemWidth: 8,
+                                        itemHeight: 8,
+                                        itemGap: 30,
+                                        inactiveColor: "#999",
+                                        textStyle: { color: "#666" },
+
+                                    },
+                                    tooltip: {
+                                        show: true,
+                                        trigger: 'item',
+                                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                    },
+                                    series: series
+                                });
+                            }
+                            clueCount()
+                            </script>
+                        </div>
+                    </div>
+                    <div class="chart-box chart-box-r">
+                        <div class="chart-box-title clearfix">
+                            <h3>通话统计</h3>
+                            <span class="rel tip"> <img src="assets/images/help_icon.png">
+        <div class="ico-layer" style="display: none;">
+          <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+        </div>
+        </span>
+                        </div>
+                        <div class="chart-box-con">
+                            <div id="callCount" style="height: 230px;"></div>
+                            <div class="chart-right-txt">
+                                <dl>
+                                    <dt>
+                                        <label>总通话时长&emsp;</label>530min 17s</dt>
+                                    <dt>
+                                        <label>平均通话时长</label>530min 17s</dt>
+                                    <dt>
+                                        <label>平均响应时长</label>530min 17s</dt>
+                                </dl>
+                            </div>
+                            <script>
+                            //通话统计
+                            function callCount() {
+                                var myChart = echarts.init(document.getElementById('callCount'));
+                                option = {
+                                    color: ['#32cff1', '#41d3b7', '#9885be', '#fe7984'],
+                                    tooltip: {
+                                        trigger: 'item',
+                                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                    },
+                                    grid: {
+                                        left: 0,
+                                        top: 0,
+                                        bottom: 0
+                                    },
+                                    legend: {
+                                        orient: 'horizontal',
+                                        bottom: '0',
+                                        itemWidth: 8,
+                                        itemHeight: 8,
+                                        itemGap: 30,
+                                        inactiveColor: "#999",
+                                        textStyle: { color: "#666" },
+                                        data: ['3分钟以上', '1-3分钟', '1分钟以内', '无人接听']
+                                    },
+                                    series: [{
+                                        name: '通话统计',
+                                        type: 'pie',
+                                        center: ['33.3333%', '46%'],
+                                        radius: ['66', '90'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            normal: {
+                                                show: false,
+                                                position: 'center',
+                                                formatter: ['{b}'].join(''),
+                                                fontSize: 14,
+                                                color: "#333"
+                                            },
+                                            emphasis: {
+                                                show: true
+                                            }
+                                        },
+                                        labelLine: {
+                                            normal: {
+                                                show: false
+                                            }
+                                        },
+                                        data: [
+                                            { value: 100, name: '3分钟以上' },
+                                            { value: 100, name: '1-3分钟' },
+                                            { value: 100, name: '1分钟以内' },
+                                            { value: 100, name: '无人接听' }
+                                        ]
+                                    }]
+                                };
+                                myChart.setOption(option);
+                            }
+                            callCount()
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-box clearfix">
+                    <div class="chart-box-title clearfix">
+                        <h3>置业顾问跟进排行</h3>
+                        <span class="rel tip"> <img src="assets/images/help_icon.png">
+        <div class="ico-layer" style="display: none;">
+          <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+        </div>
+        </span>
+                        <div class="rank">
+                            排序：
+                            <div class="select">
+                                <input onclick="document.getElementsByClassName('select')[0].className ='select select-open'" value="联系率" class="inpstyle" placeholder="" readonly="redonly" type="text">
+                                <span class="drop-arr"></span>
+                                <div class="select-dropdown">
+                                    <ul>
+                                        <li>联系率</li>
+                                        <li>联系率</li>
+                                        <li>联系率</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-box-con" style="margin-top:30px;">
+                            <!-- 占位图 -->
+                            <div class="datadefault">
+                                <div class="datadefaultpic"></div>
+                                <p>置业顾问还没有联系客户呦~</p>
+                            </div>
+
+                        <div id="agentSort" style="height: 230px; margin-top:5px;display:none;"></div>
+                        <div class="agentsort-txt" style="display:none;">
+                            <dl>
+                                <dt>联系率</dt>
+                                <dd>90%</dd>
+                                <dd>90%</dd>
+                                <dd>90%</dd>
+                                <dd>90%</dd>
+                                <dd>90%</dd>
+                            </dl>
+                        </div>
+                        <script>
+                        //顾问排序
+                        function agentSort() {
+                            var myChart = echarts.init(document.getElementById('agentSort'));
+                            option = {
+                                color: ['#fe7984', '#32cff1', '#e1e1e1'],
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                                        type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+                                        shadowStyle: {
+                                            opacity: 0
+                                        }
+                                    }
+                                },
+                                grid: {
+                                    left: 110,
+                                    right: 110,
+                                    top: 0
+                                },
+                                legend: {
+                                    orient: 'horizontal',
+                                    bottom: 20,
+                                    itemWidth: 8,
+                                    itemHeight: 8,
+                                    itemGap: 30,
+                                    inactiveColor: "#999",
+                                    textStyle: { color: "#666" },
+                                    data: ['已接通', '已联系', '已分配']
+                                },
+                                xAxis: {
+                                    type: 'value',
+                                    show: false
+                                },
+                                yAxis: [{
+                                    type: 'category',
+                                    axisLine: {
+                                        show: false
+                                    },
+                                    axisTick: {
+                                        show: false
+                                    },
+                                    axisLabel: {
+                                        color: '#333',
+                                        align: 'left',
+                                        fontFamily: ['arial', 'Microsoft YaHei'],
+                                        margin: 70,
+                                        fontSize: 12
+                                    },
+                                    data: ['2.刘萌萌', '1.刘萌萌', '1.刘萌萌', '1.刘萌萌', '1.刘萌萌']
+                                }],
+                                series: [{
+                                        name: '已接通',
+                                        type: 'bar',
+                                        stack: '总量',
+                                        barCategoryGap: 20,
+                                        barWidth: 20,
+                                        itemStyle: {
+                                            normal: { color: '#fe7984' },
+                                            emphasis: { color: '#fd8c95' }
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'insideRight'
+                                            }
+                                        },
+                                        data: [1000, 302, 301, 334, 390]
+                                    },
+                                    {
+                                        name: '已联系',
+                                        type: 'bar',
+                                        stack: '总量',
+                                        barCategoryGap: 15,
+                                        barWidth: 20,
+                                        itemStyle: {
+                                            normal: { color: '#fea8af' },
+                                            emphasis: { color: '#feb1b8' }
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'insideRight'
+                                            }
+                                        },
+                                        data: [120, 132, 101, 134, 90]
+                                    },
+                                    {
+                                        name: '已分配',
+                                        type: 'bar',
+                                        stack: '总量',
+                                        barCategoryGap: 15,
+                                        barWidth: 20,
+                                        itemStyle: {
+                                            normal: { color: '#ffcfd3' },
+                                            emphasis: { color: '#ffd6d9' }
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'insideRight'
+                                            }
+                                        },
+                                        data: [220, 182, 191, 234, 290]
+                                    }
+                                ]
+                            };
+                            myChart.setOption(option);
+                        }
+                        agentSort()
+                        </script>
+                        <div class="fold" style="margin-top:20;display: none"><img src="assets/images/arrow_down.png"><span>展开</span></div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="chart-box01 clearfix fl">
+                        <div class="chart-box-title clearfix">
+                            <h3>平均响应时长</h3>
+                            <span class="rel tip"> <img src="assets/images/help_icon.png">
+                            <div class="ico-layer" style="display: none;">
+                              <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+                            </div>
+                            </span>
+                            <div class="sort">
+                                <a href="#"><img src="assets/images/rant_down.png"></a>
+                            </div>
+                        </div>
+                        <div class="chart-box-con">
+                            <div id="callTime" style="height: 175px; margin-top:2px;"></div>
+                            <script>
+                            //通话时长
+                            function callTime() {
+                                var myChart = echarts.init(document.getElementById('callTime'));
+                                option = {
+                                    grid: {
+                                        left: 110,
+                                        right: 40,
+                                        top: 0,
+                                        bottom:0
+                                    },
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        formatter: (params) => {
+                                            let result = [params[0].name];
+                                            params.forEach((v) => {
+                                                result.push('<br/>' + v.marker);
+                                                result.push(v.seriesName);
+                                                result.push(': ');
+                                                let m = v.data.toString().split('.');
+                                                result.push(m[0] + 'min ' + (parseFloat('0.' + m[1]) * 60).toFixed(0) + 's');
+                                            });
+                                            return result.join('');
+                                        },
+                                        axisPointer: {
+                                            type: 'shadow',
+                                            shadowStyle: {
+                                                opacity: 0
+                                            }
+                                        }
+                                    },
+                                    legend: {
+                                        show: false
+                                    },
+                                    xAxis: {
+                                        type: 'value',
+                                        show: false
+                                    },
+                                    yAxis: {
+                                        type: 'category',
+                                        axisLine: {
+                                            show: false
+                                        },
+                                        axisTick: {
+                                            show: false
+                                        },
+                                        axisLabel: {
+                                            color: '#333',
+                                            align: 'left',
+                                            fontFamily: ['arial', 'Microsoft YaHei'],
+                                            margin: 70,
+                                            fontSize: 12
+                                        },
+                                        data: ['2.刘萌萌', '1.刘萌萌', '1.刘萌萌', '1.刘萌萌', '1.刘萌萌']
+                                    },
+                                    series: {
+                                        name: '已接通',
+                                        type: 'bar',
+                                        stack: '总量',
+                                        barCategoryGap: 15,
+                                        barWidth: 20,
+                                        itemStyle: {
+                                            normal: {
+                                                color: '#9885be'
+                                            },
+                                            emphasis: {
+                                                color: '#a696c7'
+                                            }
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'insideRight',
+                                                 fontFamily: ['arial', 'Microsoft YaHei'],
+                                                 fontSize: 12,
+                                                 fontWeight:100,
+                                                formatter: (v) => {
+                                                    let m = v.data.toString().split('.');
+                                                    let result = [];
+                                                    result.push(m[0] + "'" + (parseFloat('0.' + m[1]) * 60).toFixed(0) + "''");
+                                                    return result.join('');
+                                                }
+                                            }
+                                        },
+                                        data: [100, 100, 0, 1, 10]
+                                    }
+                                }
+                                myChart.setOption(option);
+                            }
+                            callTime()
+                            </script>
+                            <div class="fold" style="margin-top:8px"><img src="assets/images/arrow_down.png"><span>展开</span></div>
+                        </div>
+                    </div>
+                    <div class="chart-box01 clearfix fr">
+                        <div class="chart-box-title clearfix">
+                            <h3>平均通话时长</h3>
+                            <span class="rel tip"> <img src="assets/images/help_icon.png">
+        <div class="ico-layer" style="display: none;">
+          <p>监控楼盘每天的线索数，以及这些线索的联系数、接通数</p>
+        </div>
+        </span>
+                            <div class="sort">
+                                <a href="#"><img src="assets/images/rant_up.png"></a>
+                            </div>
+                        </div>
+                        <div class="chart-box-con">
+                            <div class="chart-time-sort">
+                                <dl>
+                                    <dt>1.刘萌萌</dt>
+                                    <dd>
+                                        <div>
+                                            <p style="width:80%">
+                                                <span>1min 45s</span>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>2.刘萌萌</dt>
+                                    <dd>
+                                        <div>
+                                            <p style="width:60%">
+                                                <span>1min 45s</span>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>3.刘萌萌</dt>
+                                    <dd>
+                                        <div>
+                                            <p style="width:50%">
+                                                <span>1min 45s</span>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>4.刘萌萌</dt>
+                                    <dd>
+                                        <div>
+                                            <p style="width:40%">
+                                                <span>1min 45s</span>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>5.刘萌萌</dt>
+                                    <dd>
+                                        <div>
+                                            <p style="width:30%">
+                                                <span>1min 45s</span>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="fold" style="margin-top:15px"><img src="assets/images/arrow_down.png"><span>展开</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-box clearfix">
+                    <div class="chart-box-title clearfix">
+                        <h3>用户画像</h3>
+                    </div>
+                    <div class="chart-box-con">
+                        <div class="personas-left">
+                            <div class="personas-area">
+                                <div class="select">
+                                    <input onclick="document.getElementsByClassName('select')[1].className ='select select-open'" type="text" class="inpstyle" value="工作区域分布" readonly="redonly"><span onclick="document.getElementsByClassName('select')[1].className ='select select-open'" class="drop-arr"></span>
+                                    <div class="select-dropdown">
+                                        <ul>
+                                            <li>远洋山水</li>
+                                            <li>远洋山水</li>
+                                            <li>远洋山水</li>
+                                            <li>远洋山水</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="personas-are-table scrollBarStyle">
+                                <table>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>海淀</td>
+                                        <td>56%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="personas-right">
+                            <dl>
+                                <dt>关注楼盘TOP10</dt>
+                                <dd>
+                                    <ol>
+                                        <li><span class="no1">1</span>北京城建华府北京城建华府</li>
+                                        <li><span class="no2">2</span>北京城建华府</li>
+                                        <li><span class="no3">3</span>北京城建华府</li>
+                                        <li><span>4</span>北京城建华府</li>
+                                        <li><span>5</span>北京城建华府</li>
+                                        <li><span>6</span>北京城建华府</li>
+                                        <li><span>7</span>北京城建华府</li>
+                                        <li><span>8</span>北京城建华府</li>
+                                        <li><span>9</span>北京城建华府</li>
+                                        <li><span>10</span>北京城建华府</li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div id="charts-personas" style="height: 400px;margin-top:20px;"></div>
+                        <div class="clearfix reportDateBox">
+                    <div class="fl">
+                        <h3>关注区域分布</h3>
+                        <table>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                                <td>海淀</td>
+                                <td>50%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="fr">
+                        <div class="personas-right">
+                            <div class="personas-right-tab">
+                                <p>关注商圈TOP10</p>
+                            </div>
+                            <dl>
+                                <dd>
+                                    <ol>
+                                        <li><span class="no1">1</span>北京城建华府北京城建华府</li>
+                                        <li><span class="no2">2</span>北京城建华府</li>
+                                        <li><span class="no3">3</span>北京城建华府</li>
+                                        <li><span>4</span>北京城建华府</li>
+                                        <li><span>5</span>北京城建华府</li>
+                                        <li><span>6</span>北京城建华府</li>
+                                        <li><span>7</span>北京城建华府</li>
+                                        <li><span>8</span>北京城建华府</li>
+                                        <li><span>9</span>北京城建华府</li>
+                                        <li><span>10</span>北京城建华府</li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="personas-right">
+                            <div class="personas-right-tab">
+                                <p>关注楼盘TOP10</p>
+                            </div>
+                            <dl>
+                                <dd>
+                                    <ol>
+                                        <li><span class="no1">1</span>北京城建华府北京城建华府</li>
+                                        <li><span class="no2">2</span>北京城建华府</li>
+                                        <li><span class="no3">3</span>北京城建华府</li>
+                                        <li><span>4</span>北京城建华府</li>
+                                        <li><span>5</span>北京城建华府</li>
+                                        <li><span>6</span>北京城建华府</li>
+                                        <li><span>7</span>北京城建华府</li>
+                                        <li><span>8</span>北京城建华府</li>
+                                        <li><span>9</span>北京城建华府</li>
+                                        <li><span>10</span>北京城建华府</li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                        <script>
+                        var uploadedDataURL = "txcloud-results-data.json";
+
+                        function showProvince() {
+                            var name = 'bj';
+
+                            var myChart = echarts.init(document.getElementById('charts-personas'));
+                            // myChart.showLoading();
+
+                            $.get(uploadedDataURL, function(geoJson) {
+
+                                // myChart.hideLoading();
+
+                                echarts.registerMap(name, geoJson);
+
+                                myChart.setOption(option = {
+                                    backgroundColor: '#fdfdfd',
+                                    visualMap: {
+                                        min: 0,
+                                        max: 100,
+                                        left: 34,
+                                        top: 'bottom',
+                                        itemWidth: 14,
+                                        itemHeight: 80,
+                                        text: ['高', '低'],
+                                        calculable: true,
+                                        inRange: {
+                                            color: ['lightskyblue', 'yellow', 'orangered']
+                                        }
+                                    },
+                                    tooltip: {
+                                        trigger: 'item',
+                                        formatter: "{b} : {c} %"
+                                    },
+                                    series: [{
+                                        type: 'map',
+                                        mapType: name,
+                                        top: 0,
+                                        bottom: 0,
+                                        label: {
+                                            normal: {
+                                                show: false
+                                            },
+                                            emphasis: {
+                                                show: false
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                borderColor: '#fdfdfd',
+                                                areaColor: 'red'
+                                            },
+                                            emphasis: {
+                                                areaColor: '#fbdd08'
+                                            }
+                                        },
+                                        animation: false,
+                                        data: [{
+                                            name: '东城区',
+                                            value: 1,
+                                            label: {
+                                                normal: {
+                                                    show: false
+                                                }
+                                            }
+                                        }, {
+                                            name: '西城区',
+                                            value: 26,
+                                            label: {
+                                                normal: {
+                                                    show: false
+                                                }
+                                            }
+                                        }, {
+                                            name: '海淀区',
+                                            value: 25
+                                        }, {
+                                            name: '朝阳区',
+                                            value: 05
+                                        }, {
+                                            name: '石景山区',
+                                            value: 52,
+                                            label: {
+                                                normal: {
+                                                    show: false
+                                                }
+                                            }
+                                        }, {
+                                            name: '大兴区',
+                                            value: 1
+                                        }, {
+                                            name: '门头沟区',
+                                            value: 10,
+                                        }, {
+                                            name: '昌平区',
+                                            value: 7
+                                        }, {
+                                            name: '通州区',
+                                            value: 8,
+                                        }, {
+                                            name: '房山区',
+                                            value: 53
+                                        }, {
+                                            name: '丰台区',
+                                            value: 04
+                                        }, {
+                                            name: '顺义区',
+                                            value: 47
+                                        }, {
+                                            name: '怀柔区',
+                                            value: 12
+                                        }, {
+                                            name: '密云区',
+                                            value: 18
+                                        }, {
+                                            name: '延庆区',
+                                            value: 21
+                                        }, {
+                                            name: '平谷区',
+                                            value: 80
+                                        }]
+                                    }]
+                                });
+                            });
+                        }
+
+                        var currentIdx = 0;
+
+                        showProvince();
+                        </script>
+                        <!-- 关注价位 户型 面积 -->
+                        <div class="chart-follow-box clearfix">
+                            <div class="chart-follow-item">
+                                <div id="follow-price" style="height:366px"></div>
+                                <script>
+                                function followprice() {
+                                    var myChart = echarts.init(document.getElementById('follow-price'));
+                                    option = {
+                                        baseOption: {
+                                            color: ['#32cff1', '#fe7984', '#a696c7', '#5cd9c1', '#ffa480', '#76afee', '#f896b2', '#b0abba', '#ffc644', '#fae44d'],
+                                            title: {
+                                                show: true,
+                                                text: '关注价位',
+                                                textAlign: 'center',
+                                                left: '49%',
+                                                top: '140px',
+                                                textStyle: {
+                                                    fontSize: 14,
+                                                    fontFamily: 'Microsoft YaHei',
+                                                    fontWeight: 'normal'
+                                                }
+                                            },
+                                            tooltip: {
+                                                trigger: 'item',
+                                                formatter: "{b} :{d}%"
+                                            },
+                                            grid: {
+                                                left: 0,
+                                                top: 0,
+                                                bottom: 0
+                                            },
+                                            legend: {
+                                                orient: 'vertical',
+                                                top: '260',
+                                                itemWidth: 8,
+                                                itemHeight: 8,
+                                                itemGap: 10,
+                                                inactiveColor: "#999",
+                                                textStyle: { color: "#666" },
+                                                data: ['100万以下', '100-200万', '200-300万', '300万以上'],
+                                                formatter: function(name) {
+                                                    return name;
+                                                }
+                                            },
+                                            series: [{
+                                                type: 'pie',
+                                                center: ['50%', '150px'],
+                                                radius: ['56', '80'],
+                                                avoidLabelOverlap: false,
+                                                label: {
+                                                    normal: {
+                                                        show: false,
+                                                        position: 'center',
+                                                        formatter: ['{b}'].join(''),
+                                                        fontSize: 14,
+                                                        color: "#333"
+                                                    },
+                                                    emphasis: {
+                                                        show: false
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    normal: {
+                                                        show: false
+                                                    }
+                                                },
+                                                data: [
+                                                    { value: 35, name: '100万以下' },
+                                                    { value: 45, name: '100-200万' },
+                                                    { value: 25, name: '200-300万' },
+                                                    { value: 15, name: '300万以上' }
+                                                ]
+                                            }]
+                                        },
+                                        media: [{
+                                            query: {
+                                                minWidth: 360
+                                            },
+                                            option: {
+                                                legend: {
+                                                    right: 20,
+                                                    top: 'center'
+                                                }
+                                            }
+                                        }]
+                                    };
+                                    myChart.setOption(option);
+                                }
+                                followprice()
+                                </script>
+                            </div>
+                            <div class="chart-follow-item">
+                                <div id="follow-housetype" style="height: 366px;"></div>
+                                <script>
+                                function followhousetype() {
+                                    var myChart = echarts.init(document.getElementById('follow-housetype'));
+                                    option = {
+                                        baseOption: {
+                                            color: ['#32cff1', '#fe7984', '#a696c7', '#5cd9c1', '#ffa480', '#76afee', '#f896b2', '#b0abba', '#ffc644', '#fae44d'],
+                                            title: {
+                                                show: true,
+                                                text: '关注户型',
+                                                textAlign: 'center',
+                                                left: '49%',
+                                                top: '140px',
+                                                textStyle: {
+                                                    fontSize: 14,
+                                                    fontFamily: 'Microsoft YaHei',
+                                                    fontWeight: 'normal'
+                                                }
+                                            },
+                                            tooltip: {
+                                                trigger: 'item',
+                                                formatter: "{b} :{d}%"
+                                            },
+                                            grid: {
+                                                left: 0,
+                                                top: 0,
+                                                bottom: 0
+                                            },
+                                            legend: {
+                                                orient: 'vertical',
+                                                top: '260',
+                                                itemWidth: 8,
+                                                itemHeight: 8,
+                                                itemGap: 10,
+                                                inactiveColor: "#999",
+                                                textStyle: { color: "#666" },
+                                                data: ['一居', '二居', '三居', '四居', '五居及以上'],
+                                                formatter: function(name) {
+                                                    return name;
+                                                }
+                                            },
+                                            series: [{
+                                                type: 'pie',
+                                                center: ['50%', '150px'],
+                                                radius: ['56', '80'],
+                                                avoidLabelOverlap: false,
+                                                label: {
+                                                    normal: {
+                                                        show: false,
+                                                        position: 'center',
+                                                        formatter: ['{b}'].join(''),
+                                                        fontSize: 14,
+                                                        color: "#333"
+                                                    },
+                                                    emphasis: {
+                                                        show: false
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    normal: {
+                                                        show: false
+                                                    }
+                                                },
+                                                data: [
+                                                    { value: 35, name: '一居' },
+                                                    { value: 45, name: '二居' },
+                                                    { value: 25, name: '三居' },
+                                                    { value: 15, name: '四居' },
+                                                    { value: 15, name: '五居及以上' },
+                                                ]
+                                            }]
+                                        },
+                                        media: [{
+                                            query: {
+                                                minWidth: 360
+                                            },
+                                            option: {
+                                                legend: {
+                                                    right: 20,
+                                                    top: 'center'
+                                                }
+                                            }
+                                        }]
+                                    };
+                                    myChart.setOption(option);
+                                }
+                                followhousetype()
+                                </script>
+                            </div>
+                            <div class="chart-follow-item">
+                                <!-- 占位图 -->
+                            <div class="datadefault" style="margin-top:76px;">
+                                <div class="datadefaultpic"></div>
+                                <p style="margin-top:26px;">置业顾问还没有联系客户呦~</p>
+                            </div>
+                                <div id="follow-area" style="height: 366px;display: none"></div>
+                                <script>
+                                function followarea() {
+                                    var myChart = echarts.init(document.getElementById('follow-area'));
+                                    option = {
+                                        baseOption: {
+                                            color: ['#32cff1', '#fe7984', '#a696c7', '#5cd9c1', '#ffa480', '#76afee', '#f896b2', '#b0abba', '#ffc644', '#fae44d'],
+                                            title: {
+                                                show: true,
+                                                text: '关注面积',
+                                                textAlign: 'center',
+                                                left: '49%',
+                                                top: '140px',
+                                                textStyle: {
+                                                    fontSize: 14,
+                                                    fontFamily: 'Microsoft YaHei',
+                                                    fontWeight: 'normal'
+                                                }
+                                            },
+                                            tooltip: {
+                                                trigger: 'item',
+                                                formatter: "{b} :{d}%"
+                                            },
+                                            grid: {
+                                                left: 0,
+                                                top: 0,
+                                                bottom: 0
+                                            },
+                                            legend: {
+                                                orient: 'vertical',
+                                                top: '260',
+                                                itemWidth: 8,
+                                                itemHeight: 8,
+                                                itemGap: 10,
+                                                inactiveColor: "#999",
+                                                textStyle: { color: "#666" },
+                                                data: ['100㎡以下', '100-150㎡', '150-200㎡', '200㎡以上'],
+                                                formatter: function(name) {
+                                                    return name;
+                                                }
+                                            },
+                                            series: [{
+                                                type: 'pie',
+                                                center: ['50%', '150px'],
+                                                radius: ['56', '80'],
+                                                avoidLabelOverlap: false,
+                                                label: {
+                                                    normal: {
+                                                        show: false,
+                                                        position: 'center',
+                                                        formatter: ['{b}'].join(''),
+                                                        fontSize: 14,
+                                                        color: "#333"
+                                                    },
+                                                    emphasis: {
+                                                        show: false
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    normal: {
+                                                        show: false
+                                                    }
+                                                },
+                                                data: [
+                                                    { value: 35, name: '100㎡以下' },
+                                                    { value: 45, name: '100-150㎡' },
+                                                    { value: 25, name: '150-200㎡' },
+                                                    { value: 15, name: '200㎡以上' }
+                                                ]
+                                            }]
+                                        },
+                                        media: [{
+                                            query: {
+                                                minWidth: 360
+                                            },
+                                            option: {
+                                                legend: {
+                                                    right: 20,
+                                                    top: 'center'
+                                                }
+                                            }
+                                        }]
+                                    };
+                                    myChart.setOption(option);
+                                }
+                                followarea()
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- conend -->
+</body>
+<script src="assets/js/layout.js"></script>
+
+</html>
+<script>
+window.onresize = function() {}
+</script>

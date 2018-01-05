@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>资金-余额充值</title>
+    <!-- 
+    base基本样式 所有页面必须引用 
+    fontstyle头部和左侧菜单字体样式
+    layeout头部和左侧布局样式
+    style页面主内容样式须引用
+    线上链接会有缓存请更新版本号
+    -->
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/basc.css">    
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/fontStyle.css"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/layout.css?v=20171124"> 
+    <link rel="stylesheet" href="http://js.soufunimg.com/fangue/customercloud/assets/css/style.css?v=20171124">  
+    <script src="http://js.soufunimg.com/fangue/customercloud/assets/js/jquery-1.8.2.min.js"></script>
+</head>
+<body class="body-f">
+<div class="f-head-before">
+    <div class="logoleft">
+        客户云
+    </div>
+    <div class="userright">
+        欢迎您，小海螺
+        <a href="javascript:;">退出</a>
+    </div>
+</div>
+
+<div class="independent-con">
+    <div class="tab-nav clearfix">
+        <ul>
+            <li class="active">余额管理</li>
+        </ul>
+    </div>
+    <div class="table-form">
+        <table> 
+            <tbody>
+                <tr>
+                    <th>企业名称：</th>
+                    <td><span class="inline-txt36">***科技公司</span></td>
+                </tr>
+                <tr>
+                    <th>当前余额：</th>
+                    <td><span class="inline-txt36 cur-money">200.00</span></td>
+                </tr> 
+                <tr>
+                    <th>充值金额：</th>
+                    <td><input type="text" class="inpstyle" placeholder="请输入充值金额"></td>
+                </tr> 
+                <tr>
+                    <th> </th>
+                    <td><label class="f-check"><span></span>我已同意<a class="f-link" href="#">《房天下网上支付协议》</a></label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="foot-btn">
+            <a href="Independent-asset-recharge-success.html" class="btn btn-submit w180">确定</a>
+    </div>
+
+</div>
+
+</body>
+</html> 
+<script>
+    $(function(){
+        $(".f-check").on("click", function(){
+            $(this).toggleClass("f-check-on");
+        })
+    })
+</script>
