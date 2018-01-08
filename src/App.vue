@@ -1,9 +1,9 @@
 <template>
     <div class="chart-box clearfix">
         时间段：
-        <date-picker v-model="timeStart"></date-picker>
+        <!-- <date-picker v-model="timeStart"></date-picker> -->
         <span> - </span>
-        <date-picker v-model="timeEnd" @input="dateChange"></date-picker>
+        <date-picker  @input="dateChange"></date-picker>
     </div>
 </template>
 
