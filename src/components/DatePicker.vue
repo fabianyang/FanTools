@@ -582,185 +582,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-/*basc*/
-body,
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-code,
-form,
-textarea,
-select,
-optgroup,
-option,
-fieldset,
-legend,
-p,
-blockquote,
-th,
-td {
+div, ul, li{
   margin: 0;
   padding: 0;
 }
-fieldset,
-img {
-  border: 0;
-}
 ul,
-li,
-ol {
+li {
   list-style: none;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 100%;
-}
-input,
-button,
-textarea,
-select,
-optgroup,
-option {
-  font-family: inherit;
-  font-size: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-}
-input,
-button,
-select {
-  margin: 0;
-  padding: 0;
-  *font-size: 100%;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-header,
-aside,
-section {
-  display: block;
-}
-input::-ms-clear {
-  display: none;
-}
-/*scrollbar*/
-::-webkit-scrollbar-track-piece {
-  background-color: #fff;
-  -webkit-border-radius: 3px;
-}
-::-webkit-scrollbar {
-  width: 12px;
-  height: 10px;
-}
-::-webkit-scrollbar-thumb {
-  height: 30px;
-  background-color: #999;
-  -webkit-border-radius: 7px;
-  outline: 2px solid #fff;
-  outline-offset: -2px;
-  border: 2px solid #fff;
-}
-::-webkit-scrollbar-thumb:hover {
-  height: 30px;
-  background-color: #9f9f9f;
-  -webkit-border-radius: 8px;
-}
-
-.clearfix:after {
-  content: "";
-  height: 0;
-  line-height: 0;
-  display: block;
-  visibility: hidden;
-  clear: both;
-}
-.clearfix {
-  zoom: 1;
-}
-body {
-  background: #f3f3f3;
-}
-body,
-button,
-input,
-select,
-textarea {
-  font: 12px/1.5 "arial", "Microsoft YaHei";
-  color: #333;
-}
-a {
-  color: #333;
-  text-decoration: none;
-  outline: 0;
-}
-a:hover {
-  color: #333;
-  text-decoration: underline;
-}
-:-moz-placeholder {
-  color: #999;
-  opacity: 1;
-}
-::-moz-placeholder {
-  color: #999;
-  opacity: 1;
-}
-input:-ms-input-placeholder {
-  color: #999;
-  opacity: 1;
-}
-input::-webkit-input-placeholder {
-  color: #999;
-  opacity: 1;
-}
-input:focus {
-  border-color: #b5bcc9;
-  outline: none;
-  box-shadow: 0;
-}
-button:focus {
-  border-color: none;
-  outline: none;
-}
-.fl {
-  float: left;
-}
-.fr {
-  float: right;
-}
-.color-red {
-  color: #e24242;
-}
-.color-green {
-  color: #00af8d;
-}
-.hide {
-  display: none;
-}
-.rel {
-  position: relative;
 }
 
 .date-picker {
   position: relative;
   display: inline-block; // height: 32px;
+  font: 12px/1.5 "arial", "Microsoft YaHei";
+  color: #333;
 }
 
 .input-wrapper {
