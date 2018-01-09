@@ -3,7 +3,7 @@
         时间段：
         <!-- <date-picker v-model="timeStart"></date-picker> -->
         <span> - </span>
-        <date-picker  @input="dateChange"></date-picker>
+        <date-picker v-model="timeEnd" @input="dateChange"></date-picker>
     </div>
 </template>
 
