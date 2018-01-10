@@ -1,63 +1,64 @@
 <template>
     <div class="date-picker">
         <div v-if="range" class="date-select-wrapper" @click="togglePanel">
-            <span class="date-select-btn" :class="buttonClass">{{ value[0] }}</span>
-            <i>-</i>
-            <span class="date-select-btn" :class="buttonClass">{{ value[1] }}</span>
+            <span class="date-select-btn" :class="buttonClass" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ `${value[0]} ~ ${value[1]}` }}</span>
         </div>
-        <div v-else class="date-select-wrapper" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
+        <div v-else class="date-select-wrapper">
             <span class="date-select-btn" @click="togglePanel" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value }}</span>
-            <!-- <transition name="fade">
-                <img class="cancel-btn" src="./cancel.png" v-show="showCancel" @click="clear">
-            </transition> -->
         </div>
 
         <transition name="toggle">
-            <div class="date-panel" v-show="panelState" :style="coordinates">
-                <div class="panel-header" v-show="panelType !== 'year'">
-                    <div class="arrow-left" @click="prevMonthPreview()">&lt;</div>
-                    <div class="year-month-box">
-                        <div class="year-box" @click="changeType('year')" v-text="tempSelect.year"></div>
-                        <div class="month-box" @click="changeType('month')">{{tempSelect.month + 1 | month(language)}}</div>
-                    </div>
-                    <div class="arrow-right" @click="nextMonthPreview()">&gt;</div>
+        <div class="date-panel" v-show="panelState" :style="coordinates">
+            <div class="panel-header" v-show="panelType !== 'year'">
+                <div class="arrow-left" @click="prevMonthPreview()">&lt;</div>
+                <div class="year-month-box">
+                    <div class="year-box" @click="changeType('year')" v-text="tempSelect.year"></div>
+                    <div class="month-box" @click="changeType('month')">{{tempSelect.month + 1 | month(language)}}</div>
                 </div>
-                <div class="panel-header" v-show="panelType === 'year'">
-                    <div class="arrow-left" @click="changeYearList(0)">&lt;</div>
-                    <div class="year-range">
-                        <span v-text="paneList.year[0]"></span> -
-                        <span v-text="paneList.year[paneList.year.length - 1]"></span>
-                    </div>
-                    <div class="arrow-right" @click="changeYearList(1)">&gt;</div>
-                </div>
-                <div class="type-year" v-show="panelType === 'year'">
-                    <ul class="year-list">
-                        <li v-for="(item, index) in paneList.year" :key="index" v-text="item" :class="{selected: isSelected('year', item), invalid: yearValidate(item)}" @click="selectYear(item)">
-                        </li>
-                    </ul>
-                </div>
-                <div class="type-month" v-show="panelType === 'month'">
-                    <ul class="month-list">
-                        <li v-for="(item, index) in paneList.month" :key="index" :class="{selected: isSelected('month', index), invalid: monthValidate(index)}" @click="selectMonth(index)">
-                            {{item | month(language)}}
-                        </li>
-                    </ul>
-                </div>
-                <div class="type-date" v-show="panelType === 'date'">
-                    <ul class="weeks">
-                        <li v-for="(item, index) in paneList.week" :key="index">{{item | week(language)}}</li>
-                    </ul>
-                    <ul class="date-list">
-                        <li v-for="(item, index) in datePaneList" :key="index" :class="{prevMonth: item.prevMonth, nextMonth: item.nextMonth,
-                                        invalid: dateValidate(item), firstItem: (index % 7) === 0}" @click="selectDate(item)">
-                            <div class="message" :class="{selected: isSelected('date', item)}">
-                                <div class="bg"></div>
-                                <span v-text="item.value"></span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <div class="arrow-right" @click="nextMonthPreview()">&gt;</div>
             </div>
+            <div class="panel-header" v-show="panelType === 'year'">
+                <div class="arrow-left" @click="changeYearList(0)">&lt;</div>
+                <div class="year-range">
+                    <span v-text="paneList.year[0]"></span> -
+                    <span v-text="paneList.year[paneList.year.length - 1]"></span>
+                </div>
+                <div class="arrow-right" @click="changeYearList(1)">&gt;</div>
+            </div>
+            <div class="type-year" v-show="panelType === 'year'">
+                <ul class="year-list">
+                    <li v-for="(item, index) in paneList.year" :key="index" v-text="item" :class="{selected: isSelected('year', item), invalid: yearValidate(item)}" @click="selectYear(item)">
+                    </li>
+                </ul>
+            </div>
+            <div class="type-month" v-show="panelType === 'month'">
+                <ul class="month-list">
+                    <li v-for="(item, index) in paneList.month" :key="index" :class="{selected: isSelected('month', index), invalid: monthValidate(index), temp: tempSelect.month === index && !isSelected('month', index)}" @click="selectMonth(index)">
+                        {{item | month(language)}}
+                    </li>
+                </ul>
+            </div>
+            <div class="type-date" v-show="panelType === 'date'">
+                <ul class="weeks">
+                    <li v-for="(item, index) in paneList.week" :key="index">{{item | week(language)}}</li>
+                </ul>
+                <ul class="date-list">
+                    <li v-for="(item, index) in datePaneList" :key="index" :class="{prevMonth: item.prevMonth, nextMonth: item.nextMonth,
+                                    invalid: dateValidate(item), firstItem: (index % 7) === 0}" @click="selectDate(item)">
+                        <div class="message" :class="{selected: isSelected('date', item)}">
+                            <div class="bg"></div>
+                            <span v-text="item.value"></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <a class="btn" @click="reset">重置</a>
+                <a class="btn" @click="back2view">返回</a>
+                <a class="btn" @click="btnClose">关闭</a>
+                <a class="btn" @click="evEmit">确定</a>
+            </div>
+        </div>
         </transition>
     </div>
 </template>
@@ -74,7 +75,7 @@ function DateDiff(sDate1, sDate2) {    //sDate1和sDate2是2006-12-18格式
     return iDays
 }
 
-function GetWeekRange({ year, month, date, weekStart }) {
+function gGetWeekRange({ year, month, date, weekStart }) {
     const dateStart = new Date(year, month, date);
     const day = dateStart.getDay();
     // 所选日期前推一周
@@ -117,9 +118,7 @@ function GetWeekRange({ year, month, date, weekStart }) {
     }
 }
 
-
-
-let hasRendered = false;
+let gResetValue;
 
 export default {
     name: 'DatePicker',
@@ -328,10 +327,22 @@ export default {
             }
         },
         prevMonthPreview() {
-            this.tempSelect.month = this.tempSelect.month === 0 ? 0 : this.tempSelect.month - 1
+            if (this.tempSelect.month === 0) {
+                this.tempSelect.month = 11;
+                this.tempSelect.year--;
+            } else {
+                this.tempSelect.month--;
+            }
+            // this.tempSelect.month = this.tempSelect.month === 0 ? 0 : this.tempSelect.month - 1
         },
         nextMonthPreview() {
-            this.tempSelect.month = this.tempSelect.month === 11 ? 11 : this.tempSelect.month + 1
+            if (this.tempSelect.month === 11) {
+                this.tempSelect.month = 0;
+                this.tempSelect.year++;
+            } else {
+                this.tempSelect.month++;
+            }
+            // this.tempSelect.month = this.tempSelect.month === 11 ? 11 : this.tempSelect.month + 1
         },
         selectYear(year) {
             if (this.yearValidate(year)) return;
@@ -375,7 +386,6 @@ export default {
                 this.month = tempSelectMonth;
                 this.date = date.value;
                 let value = util.format(new Date(this.year, this.month, this.date), this.format);
-                console.log(value);
                 this.$emit('input', value);
                 this.panelState = false
             } else if (this.range === 'common') {
@@ -403,14 +413,29 @@ export default {
                     this.panelState = false;
                 }
             } else if (this.range === 'week') {
-                const weekRange = GetWeekRange({
+                const weekRange = gGetWeekRange({
                     year: tempSelectYear,
                     month: tempSelectMonth,
                     date: date.value,
                     weekStart: this.weekStart
                 });
-                let rs = util.format(new Date(weekRange[0]), this.format);
-                let re = util.format(new Date(weekRange[1]), this.format);
+
+                const dateStart = weekRange[0].split('-');
+                const dateEnd = weekRange[1].split('-');
+
+                this.selectRangeStart = {
+                    year: Number(dateStart[0]),
+                    month: Number(dateStart[1]) - 1,
+                    date: Number(dateStart[2])
+                }
+
+                this.selectRangeEnd = {
+                    year: Number(dateEnd[0]),
+                    month: Number(dateEnd[1]) - 1,
+                    date: Number(dateEnd[2])
+                }
+                const rs = util.format(new Date(weekRange[0]), this.format);
+                const re = util.format(new Date(weekRange[1]), this.format);
                 this.$emit('input', [rs, re]);
                 this.hasSelectRangeStart = false;
                 this.panelState = false;
@@ -447,8 +472,82 @@ export default {
                 this.panelType = 'date';
             }
         },
-        clear() {
-            this.$emit('input', this.range ? ['', ''] : '')
+        reset() {
+            const value = this.range ? gResetValue.concat() : gResetValue;
+            this.back2view(value);
+            this.evEmit();
+        },
+        back2view(value) {
+            // 验证数据合法性
+            if (this.range) {
+                let dateStart = util.format(new Date(value[0]), 'yyyy-MM-dd').split('-');
+                let dateEnd = util.format(new Date(value[1]), 'yyyy-MM-dd').split('-');
+
+                this.tempSelect = {
+                    year: Number(dateStart[0]),
+                    month: Number(dateStart[1]) - 1
+                };
+
+                if (this.range === 'common') {
+                    this.selectRangeStart = {
+                        year: Number(dateStart[0]),
+                        month: Number(dateStart[1]) - 1,
+                        date: Number(dateStart[2])
+                    }
+                    this.selectRangeEnd = {
+                        year: Number(dateEnd[0]),
+                        month: Number(dateEnd[1]) - 1,
+                        date: Number(dateEnd[2])
+                    }
+                } else if (this.range === 'week') {
+                    const weekRange = gGetWeekRange({
+                        year: Number(dateStart[0]),
+                        month: Number(dateStart[1]) - 1,
+                        date: Number(dateStart[2]),
+                        weekStart: this.weekStart
+                    });
+
+                    dateStart = weekRange[0].split('-');
+                    dateEnd = weekRange[1].split('-');
+
+                    this.selectRangeStart = {
+                        year: Number(dateStart[0]),
+                        month: Number(dateStart[1]) - 1,
+                        date: Number(dateStart[2])
+                    }
+
+                    this.selectRangeEnd = {
+                        year: Number(dateEnd[0]),
+                        month: Number(dateEnd[1]) - 1,
+                        date: Number(dateEnd[2])
+                    }
+                }
+
+            } else {
+                this.tempSelect = {
+                    year: this.year,
+                    month: this.month
+                };
+                const date = new Date(this.value);
+
+                this.year = date.getFullYear();
+                this.month = date.getMonth();
+                this.date = date.getDate();
+            }
+        },
+        btnClose() {
+            this.panelState = false;
+            this.hasSelectRangeStart = false;
+            this.panelType = 'date';
+        },
+        evEmit() {
+            if (this.range) {
+                const rs = util.format(new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date), this.format);
+                const re = util.format(new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date), this.format);
+                this.$emit('input', [rs, re]);
+            } else {
+                this.$emit('input', util.format(new Date(this.year, this.month, this.date), this.format));
+            }
         }
     },
     data() {
@@ -461,8 +560,6 @@ export default {
             date = now.getDate();
 
         return {
-            // 是否显示确定、关闭按钮
-            showCancel: false,
             // 面板状态，显示、隐藏。
             panelState: false,
             // 面板状态，年、月、日 面板。
@@ -514,69 +611,31 @@ export default {
                 this.coordinates = { left: '0' }
             }
 
-            const value = this.value;
+            const value = this.value,
+                range = this.range;
+
             // 验证数据合法性
-            if (this.range) {
+            if (range) {
                 if (util.getTypeString(this.value) !== 'Array') {
-                    throw new Error('Binding value must be an array in range mode.')
+                    throw new Error('Binding value must be an array in range mode.');
+                } else if (range === 'common'){
+                    gResetValue = [value[0], value[1]];
+                } else if (range === 'week') {
+                    gResetValue = [value[0]];
                 }
-
-                let dateStart = util.format(new Date(value[0]), 'yyyy-MM-dd').split('-');
-                let dateEnd = util.format(new Date(value[1]), 'yyyy-MM-dd').split('-');
-
-                this.tempSelect = {
-                    year: Number(dateStart[0]),
-                    month: Number(dateStart[1]) - 1
-                };
-
-                if (this.range === 'common') {
-                    this.selectRangeStart = {
-                        year: Number(dateStart[0]),
-                        month: Number(dateStart[1]) - 1,
-                        date: Number(dateStart[2])
-                    }
-                    this.selectRangeEnd = {
-                        year: Number(dateEnd[0]),
-                        month: Number(dateEnd[1]) - 1,
-                        date: Number(dateEnd[2])
-                    }
-
-                } else if (this.range === 'week') {
-                    const weekRange = GetWeekRange({
-                        year: Number(dateStart[0]),
-                        month: Number(dateStart[1]) - 1,
-                        date: Number(dateStart[2]),
-                        weekStart: this.weekStart
-                    });
-
-                    dateStart = weekRange[0].split('-');
-                    dateEnd = weekRange[1].split('-');
-
-                    this.selectRangeStart = {
-                        year: Number(dateStart[0]),
-                        month: Number(dateStart[1]) - 1,
-                        date: Number(dateStart[2])
-                    }
-
-                    this.selectRangeEnd = {
-                        year: Number(dateEnd[0]),
-                        month: Number(dateEnd[1]) - 1,
-                        date: Number(dateEnd[2])
-                    }
-                }
-
             } else {
-                this.tempSelect = {
-                    year: this.year,
-                    month: this.month
-                };
-                const date = new Date(this.value);
-
-                this.year = date.getFullYear();
-                this.month = date.getMonth();
-                this.date = date.getDate();
-
+                gResetValue = value;
             }
+
+            this.back2view(value);
+
+            // 默认选择周时，由于是系统给指定区间，所以必须触发 input 一次。
+            if (range === 'week') {
+                const rs = util.format(new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date), this.format);
+                const re = util.format(new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date), this.format);
+                this.$emit('input', [rs, re]);
+            }
+
             window.addEventListener('click', this.close)
         })
     },
@@ -593,6 +652,10 @@ div, ul, li{
 ul,
 li {
   list-style: none;
+}
+a {color: #333; text-decoration: none; outline: 0 }
+a:hover{color: #333; text-decoration: none;
+    cursor: pointer;
 }
 
 .date-picker {
@@ -641,7 +704,7 @@ li {
 
 .date-select-btn {
   display: inline-block;
-  width: 70px;
+//   width: 70px;
   height: 28px;
   padding: 0 12px;
   line-height: 28px;
@@ -680,11 +743,11 @@ li {
   background-color: #fff;
 }
 
-.panel-header {
+.panel-header, .panel-footer {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
-
+  user-select: none;
   line-height: 34px;
   height: 34px;
   color: #333;
@@ -754,6 +817,10 @@ li {
     &.invalid {
       cursor: not-allowed;
       color: #ccc;
+    }
+    &.temp {
+      background-color: #ff8e99;
+      color: #fff;
     }
   }
 }
@@ -868,6 +935,28 @@ li {
   }
 }
 
+.panel-footer {
+    line-height: 24px;
+    height: 24px;
+    padding: 5px 0;
+    justify-content: flex-end;
+    .btn {
+        font-size: 12px;
+        border-radius: 2px;
+        text-align: center;
+        height: 24px;
+        line-height: 24px;
+        box-shadow: 0;
+        border: none;
+        display: inline-block;
+        background-color: #5A95F7;
+        color: #fff;
+        width: 36px;
+        margin-right: 6px;
+    }
+}
+
+
 .toggle-enter,
 .toggle-leave-active {
   opacity: 0;
@@ -891,7 +980,7 @@ li {
 }
 
 .date-select-wrapper .common {
-  width: 70px;
+//   width: 70px;
   height: 30px;
   padding: 0 12px;
   max-width: 474px;
