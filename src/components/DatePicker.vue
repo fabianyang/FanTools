@@ -1,7 +1,7 @@
 <template>
     <div class="date-picker">
         <div v-if="range" class="date-select-wrapper" @click="togglePanel">
-            <span class="date-select-btn" :class="buttonClass" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ `${value[0]} ~ ${value[1]}` }}</span>
+            <span class="date-select-btn" :class="buttonClass" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value[0] + ' ~ ' + value[1] }}</span>
         </div>
         <div v-else class="date-select-wrapper">
             <span class="date-select-btn" @click="togglePanel" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value }}</span>
@@ -54,7 +54,7 @@
             </div>
             <div class="panel-footer">
                 <a class="btn" @click="reset">重置</a>
-                <a class="btn" @click="back2view">返回</a>
+                <a class="btn" @click="back2view(value)">返回</a>
                 <a class="btn" @click="btnClose">关闭</a>
                 <a class="btn" @click="evEmit">确定</a>
             </div>
@@ -186,6 +186,10 @@ export default {
         selectMaxCount: {
             type: Number,
             default: 0
+        },
+        useTools: {
+            type: Boolean,
+            default: true
         }
     },
     watch: {
@@ -385,9 +389,9 @@ export default {
                 this.year = tempSelectYear;
                 this.month = tempSelectMonth;
                 this.date = date.value;
-                let value = util.format(new Date(this.year, this.month, this.date), this.format);
-                this.$emit('input', value);
-                this.panelState = false
+                // let value = util.format(new Date(this.year, this.month, this.date), this.format);
+                // this.$emit('input', value);
+                // this.panelState = false
             } else if (this.range === 'common') {
                 if (!this.hasSelectRangeStart) {
                     this.hasSelectRangeStart = true;
@@ -406,11 +410,11 @@ export default {
                         [this.selectRangeStart.month, this.selectRangeEnd.month] = [this.selectRangeEnd.month, this.selectRangeStart.month];
                         [this.selectRangeStart.date, this.selectRangeEnd.date] = [this.selectRangeEnd.date, this.selectRangeStart.date];
                     }
-                    const rs = util.format(new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date), this.format);
-                    const re = util.format(new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date), this.format);
-                    this.$emit('input', [rs, re]);
-                    this.hasSelectRangeStart = false;
-                    this.panelState = false;
+                    // const rs = util.format(new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date), this.format);
+                    // const re = util.format(new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date), this.format);
+                    // this.$emit('input', [rs, re]);
+                    // this.hasSelectRangeStart = false;
+                    // this.panelState = false;
                 }
             } else if (this.range === 'week') {
                 const weekRange = gGetWeekRange({
@@ -434,11 +438,16 @@ export default {
                     month: Number(dateEnd[1]) - 1,
                     date: Number(dateEnd[2])
                 }
-                const rs = util.format(new Date(weekRange[0]), this.format);
-                const re = util.format(new Date(weekRange[1]), this.format);
-                this.$emit('input', [rs, re]);
-                this.hasSelectRangeStart = false;
-                this.panelState = false;
+                // const rs = util.format(new Date(weekRange[0]), this.format);
+                // const re = util.format(new Date(weekRange[1]), this.format);
+                // this.$emit('input', [rs, re]);
+                // this.hasSelectRangeStart = false;
+                // this.panelState = false;
+            }
+
+            if (!this.useTools) {
+                this.evEmit();
+                this.btnClose();
             }
         },
         yearValidate(year) {
@@ -473,6 +482,8 @@ export default {
             }
         },
         reset() {
+            // 重置以初始传入值为基准，返回以选定值为基准。
+            // 所以 range === 'week' 时，value [2018-01-01] 点击两个按钮会出现两种不同 panel type
             const value = this.range ? gResetValue.concat() : gResetValue;
             this.back2view(value);
             this.evEmit();
@@ -548,6 +559,7 @@ export default {
             } else {
                 this.$emit('input', util.format(new Date(this.year, this.month, this.date), this.format));
             }
+            this.btnClose();
         }
     },
     data() {
