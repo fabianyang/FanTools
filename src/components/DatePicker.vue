@@ -52,7 +52,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="panel-footer">
+            <div class="panel-footer" v-if="useTools">
                 <a class="btn" @click="reset">重置</a>
                 <a class="btn" @click="back2view(value)">返回</a>
                 <a class="btn" @click="btnClose">关闭</a>
@@ -189,7 +189,7 @@ export default {
         },
         useTools: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     watch: {
@@ -383,6 +383,7 @@ export default {
                 }
             }
 
+            let canEmit = false;
             tempSelectYear = this.tempSelect.year;
             tempSelectMonth = this.tempSelect.month;
             if (!this.range) {
@@ -392,6 +393,7 @@ export default {
                 // let value = util.format(new Date(this.year, this.month, this.date), this.format);
                 // this.$emit('input', value);
                 // this.panelState = false
+                canEmit = true;
             } else if (this.range === 'common') {
                 if (!this.hasSelectRangeStart) {
                     this.hasSelectRangeStart = true;
@@ -415,6 +417,7 @@ export default {
                     // this.$emit('input', [rs, re]);
                     // this.hasSelectRangeStart = false;
                     // this.panelState = false;
+                    canEmit = true;
                 }
             } else if (this.range === 'week') {
                 const weekRange = gGetWeekRange({
@@ -438,6 +441,7 @@ export default {
                     month: Number(dateEnd[1]) - 1,
                     date: Number(dateEnd[2])
                 }
+                canEmit = true;
                 // const rs = util.format(new Date(weekRange[0]), this.format);
                 // const re = util.format(new Date(weekRange[1]), this.format);
                 // this.$emit('input', [rs, re]);
@@ -445,7 +449,7 @@ export default {
                 // this.panelState = false;
             }
 
-            if (!this.useTools) {
+            if (!this.useTools && canEmit) {
                 this.evEmit();
                 this.btnClose();
             }

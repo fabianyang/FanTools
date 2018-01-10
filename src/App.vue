@@ -1,30 +1,56 @@
 <template>
     <div id="app">
-        <!-- <div class="chart-box clearfix">
-            <tab-title title="线索监控" tip="服务期内每个顾问的线索统计，按照不同考核指标排序">
+        <div class="chart-box clearfix">
+            <tab-title title="单日期选择器" tip="只传入 v-model">
             </tab-title>
             <div class="chart-box-con">
                 <date-picker v-model="dateSingle" @input="dateSingleChange"></date-picker>
             </div>
         </div>
         <div class="chart-box clearfix">
-            <tab-title title="线索监控" tip="服务期内每个顾问的线索统计，按照不同考核指标排序">
+            <tab-title title="区间选择器" tip="range 参数为 common">
             </tab-title>
             <div class="chart-box-con">
                 <date-picker range="common" v-model="dateCommon" @input="dateCommonChange"></date-picker>
             </div>
-        </div> -->
+        </div>
         <div class="chart-box clearfix">
-            <tab-title title="线索监控" tip="服务期内每个顾问的线索统计，按照不同考核指标排序">
+            <tab-title title="周选择器" tip="range 参数为 week 默认 weekStart 参数为 0">
             </tab-title>
             <div class="chart-box-con">
                 <date-picker range="week" v-model="dateWeek" @input="dateWeekChange"></date-picker>
             </div>
         </div>
+        <div class="chart-box clearfix">
+            <tab-title title="周选择器" tip="range 参数为 week 设置 weekStart 参数为 5 从周五算作周起始">
+            </tab-title>
+            <div class="chart-box-con">
+                <date-picker range="week" :week-start="5" v-model="dateWeek" @input="dateWeekChange"></date-picker>
+            </div>
+        </div>
+        <div class="chart-box clearfix">
+            <tab-title title="单选择器" tip="使用工具栏触发">
+            </tab-title>
+            <div class="chart-box-con">
+                <date-picker v-model="dateSingle" @input="dateSingleChange" useTools></date-picker>
+            </div>
+        </div>
+        <div class="chart-box clearfix">
+            <tab-title title="区间选择器" tip="使用工具栏触发">
+            </tab-title>
+            <div class="chart-box-con">
+                <date-picker range="week" v-model="dateCommon" @input="dateCommonChange" useTools></date-picker>
+            </div>
+        </div>
+        <a href="https://github.com/yangfan86/VDatePicker.git">
+            <img style="position: absolute; top: 0; right: 0; border: 0;" src="./assets/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
+        </a>
     </div>
 </template>
 
 <script>
+// https://www.cnblogs.com/good10000/p/4797973.html
+// https://www.cnblogs.com/bluetata/articles/8127064.html
 import TabTitle from '@/components/TabTitle';
 import DatePicker from '@/components/DatePicker';
 
@@ -63,7 +89,7 @@ export default {
         return {
             dateSingle: formatDate(new Date()),
             dateCommon: [formatDate(getCurrentMonthFirst()), formatDate(getCurrentMonthLast())],
-            dateWeek: [formatDate(getCurrentMonthFirst()), formatDate(getCurrentMonthLast())]
+            dateWeek: [formatDate(getCurrentMonthFirst())]
         }
     },
     methods: {
@@ -110,6 +136,17 @@ input:-ms-input-placeholder{color: #999;opacity:1;}
 input::-webkit-input-placeholder{color: #999;opacity:1;}
 input:focus{border-color: #b5bcc9; outline: none; box-shadow: 0;}
 button:focus{border-color: none; outline: none;}
+
+body {
+    padding-left: calc(100vw - 100%);
+}
+
+@media screen and (max-width: 1150px) {
+   body {
+       margin-left: calc(100% - 100vw);
+   }
+}
+
 </style>
 
 <style lang="scss">
@@ -119,6 +156,7 @@ button:focus{border-color: none; outline: none;}
     border: 1px solid #ccc;
     min-height: 768px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .chart-box {
