@@ -29,10 +29,10 @@
             </div>
         </div>
         <div class="chart-box clearfix">
-            <tab-title title="单选择器" tip="使用工具栏触发">
+            <tab-title title="单选择器" tip="格式化日期格式">
             </tab-title>
             <div class="chart-box-con">
-                <date-picker v-model="dateSingle" @input="dateSingleChange" useTools></date-picker>
+                <date-picker v-model="dateSingle" @input="dateSingleChange" format="yyyy/MM/dd"></date-picker>
             </div>
         </div>
         <div class="chart-box clearfix">
