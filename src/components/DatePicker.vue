@@ -96,7 +96,7 @@ function GetWeekRange({ year, month, date, weekStart }) {
         let dateLast = sunday - (7 - weekStart);
         if (day >= weekStart) {
             // 本周日
-            sunday = dateStart + (7 - day);
+            sunday = date + (7 - day);
             // 本周一
             // now.getDate() - (day-1)
             dateLast = sunday - (7 - weekStart);
@@ -107,7 +107,7 @@ function GetWeekRange({ year, month, date, weekStart }) {
         // this.tmpStartMonth = nd.getMonth();
         // this.tmpStartDate = nd.getDate();
 
-        const deteEnd = new Date(year, month, 6 + dateLast);
+        const dateEnd = new Date(year, month, 6 + dateLast);
 
         // this.tmpEndYear = ed.getFullYear();
         // this.tmpEndMonth = ed.getMonth();
@@ -294,7 +294,7 @@ export default {
                     if (this.range) {
                         return (
                             new Date(this.tempSelect.year, item).getTime() >= new Date(this.selectRangeStart.year, this.selectRangeStart.month).getTime()
-                            && new Date(this.tempSelect.year, item).getTime() <= new Date(this.selectRangeStart.year, this.selectRangeStart.month).getTime()
+                            && new Date(this.tempSelect.year, item).getTime() <= new Date(this.selectRangeEnd.year, this.selectRangeEnd.month).getTime()
                         )
                     } else {
                         return (item === this.tempSelect.month && this.year === this.tempSelect.year)
@@ -306,7 +306,7 @@ export default {
                         item.nextMonth && month++;
                         return (
                             new Date(this.tempSelect.year, month, item.value).getTime() >= new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date).getTime()
-                            && new Date(this.tempSelect.year, month, item.value).getTime() <= new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date).getTime()
+                            && new Date(this.tempSelect.year, month, item.value).getTime() <= new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date).getTime()
                         )
                     } else {
                         const date = this.date;
@@ -514,6 +514,7 @@ export default {
                 this.coordinates = { left: '0' }
             }
 
+            const value = this.value;
             // 验证数据合法性
             if (this.range) {
                 if (util.getTypeString(this.value) !== 'Array') {
@@ -523,17 +524,23 @@ export default {
                 let dateStart = util.format(new Date(value[0]), 'yyyy-MM-dd').split('-');
                 let dateEnd = util.format(new Date(value[1]), 'yyyy-MM-dd').split('-');
 
+                this.tempSelect = {
+                    year: Number(dateStart[0]),
+                    month: Number(dateStart[1]) - 1
+                };
+
                 if (this.range === 'common') {
                     this.selectRangeStart = {
                         year: Number(dateStart[0]),
                         month: Number(dateStart[1]) - 1,
                         date: Number(dateStart[2])
                     }
-                    this.selectRangEnd = {
+                    this.selectRangeEnd = {
                         year: Number(dateEnd[0]),
                         month: Number(dateEnd[1]) - 1,
                         date: Number(dateEnd[2])
                     }
+
                 } else if (this.range === 'week') {
                     const weekRange = GetWeekRange({
                         year: Number(dateStart[0]),
@@ -546,32 +553,29 @@ export default {
                     dateEnd = weekRange[1].split('-');
 
                     this.selectRangeStart = {
-                        year: Number(dateStart),
+                        year: Number(dateStart[0]),
                         month: Number(dateStart[1]) - 1,
                         date: Number(dateStart[2])
                     }
 
-                    this.selectRangEnd = {
+                    this.selectRangeEnd = {
                         year: Number(dateEnd[0]),
                         month: Number(dateEnd[1]) - 1,
                         date: Number(dateEnd[2])
                     }
                 }
 
-                this.tempSelect = {
-                    year: this.selectRangeStart.year,
-                    month: this.selectRangeStart.month
-                };
             } else {
-                const date = new Date(this.value);
-                this.year = date.getFullYear();
-                this.month = date.getMonth();
-                this.date = date.getDate();
-
                 this.tempSelect = {
                     year: this.year,
                     month: this.month
                 };
+                const date = new Date(this.value);
+
+                this.year = date.getFullYear();
+                this.month = date.getMonth();
+                this.date = date.getDate();
+
             }
             window.addEventListener('click', this.close)
         })
