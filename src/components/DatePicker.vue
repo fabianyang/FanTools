@@ -1,10 +1,10 @@
 <template>
-    <div class="date-picker">
+    <div :class="klass">
         <div v-if="range" class="date-select-wrapper" @click="togglePanel">
-            <span class="date-select-btn" :class="buttonClass" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value[0] + ' ~ ' + value[1] }}</span>
+            <span class="date-select-btn common" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value[0] + ' ~ ' + value[1] }}</span>
         </div>
-        <div v-else class="date-select-wrapper">
-            <span class="date-select-btn" @click="togglePanel" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value }}</span>
+        <div v-else class="date-select-wrapper" @click="togglePanel" >
+            <span class="date-select-btn common" :style="{ 'border-color': panelState ? '#b5bcc9' : '#d6dae1' }">{{ value }}</span>
         </div>
 
         <transition name="toggle">
@@ -179,9 +179,9 @@ export default {
             type: Number,
             default: 0
         },
-        buttonClass: {
+        klass: {
             type: String,
-            default: 'common'
+            default: 'date-picker'
         },
         selectMaxCount: {
             type: Number,
