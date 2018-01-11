@@ -278,8 +278,6 @@ export default {
                         )
                     } else {
                         const date = this.date;
-                        // const date = new Date(this.value).getDate() || this.date;
-                        // console.log(item, date);
                         return (date === item.value && this.month === this.tempSelect.month && item.currentMonth)
                     }
             }
@@ -302,7 +300,6 @@ export default {
             } else {
                 this.tempSelect.month--;
             }
-            // this.tempSelect.month = this.tempSelect.month === 0 ? 0 : this.tempSelect.month - 1
         },
         nextMonthPreview() {
             if (this.tempSelect.month === 11) {
@@ -311,7 +308,6 @@ export default {
             } else {
                 this.tempSelect.month++;
             }
-            // this.tempSelect.month = this.tempSelect.month === 11 ? 11 : this.tempSelect.month + 1
         },
         selectYear(year) {
             if (this.yearValidate(year)) return;
@@ -355,9 +351,6 @@ export default {
                 this.year = tempSelectYear;
                 this.month = tempSelectMonth;
                 this.date = date.value;
-                // let value = util.format(new Date(this.year, this.month, this.date), this.format);
-                // this.$emit('input', value);
-                // this.panelState = false
                 canEmit = true;
             } else if (this.range === 'common') {
                 if (!this.hasSelectRangeStart) {
@@ -377,11 +370,6 @@ export default {
                         [this.selectRangeStart.month, this.selectRangeEnd.month] = [this.selectRangeEnd.month, this.selectRangeStart.month];
                         [this.selectRangeStart.date, this.selectRangeEnd.date] = [this.selectRangeEnd.date, this.selectRangeStart.date];
                     }
-                    // const rs = util.format(new Date(this.selectRangeStart.year, this.selectRangeStart.month, this.selectRangeStart.date), this.format);
-                    // const re = util.format(new Date(this.selectRangeEnd.year, this.selectRangeEnd.month, this.selectRangeEnd.date), this.format);
-                    // this.$emit('input', [rs, re]);
-                    // this.hasSelectRangeStart = false;
-                    // this.panelState = false;
                     canEmit = true;
                 }
             } else if (this.range === 'week') {
@@ -407,11 +395,6 @@ export default {
                     date: Number(dateEnd[2])
                 }
                 canEmit = true;
-                // const rs = util.format(new Date(weekRange[0]), this.format);
-                // const re = util.format(new Date(weekRange[1]), this.format);
-                // this.$emit('input', [rs, re]);
-                // this.hasSelectRangeStart = false;
-                // this.panelState = false;
             }
 
             if (!this.useTools && canEmit) {
@@ -532,9 +515,6 @@ export default {
         }
     },
     data() {
-        console.log(this.range, this.value);
-        console.log('data');
-
         let now = new Date(),
             year = now.getFullYear(),
             month = now.getMonth(),
@@ -579,7 +559,6 @@ export default {
         }
     },
     mounted() {
-        console.log('mounted');
         // top: `${window.getComputedStyle(this.$el.children[0]).offsetHeight + 4}px`
         this.$nextTick(() => {
             const el = this.$el,

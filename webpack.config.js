@@ -10,8 +10,8 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        // publicPath: '/',
+        filename: 'js/build.js'
     },
     module: {
         rules: [{
@@ -63,7 +63,7 @@ module.exports = {
             test: /\.(png|jpg|gif|svg)$/,
             loader: 'file-loader',
             options: {
-                name: '[name].[ext]?[hash]'
+                name: 'assets/[name].[ext]?[hash]'
             }
         }]
     },
@@ -82,7 +82,14 @@ module.exports = {
     performance: {
         hints: false
     },
-    devtool: '#eval-source-map'
+    devtool: '#eval-source-map',
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true
+        })
+    ]
 };
 console.log(resolve('src'));
 if (process.env.NODE_ENV === 'production') {
@@ -102,20 +109,6 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: false, // true,
-                removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
-            },
-            // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-            chunksSortMode: 'dependency'
-        }),
+        })
     ]);
 }

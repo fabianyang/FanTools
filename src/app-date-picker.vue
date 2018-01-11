@@ -89,7 +89,8 @@ export default {
         return {
             dateSingle: formatDate(new Date()),
             dateCommon: [formatDate(getCurrentMonthFirst()), formatDate(getCurrentMonthLast())],
-            dateWeek: [formatDate(getCurrentMonthFirst())]
+            dateWeek: [formatDate(getCurrentMonthFirst())],
+            html: '<pre><code class="html">&lt;div&lt;&lt;/div&lt;</code></pre>'
         }
     },
     methods: {
