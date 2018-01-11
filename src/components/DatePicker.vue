@@ -134,8 +134,7 @@ export default {
             }
         },
         range: {
-            type: String,
-            default: ''
+            type: String
         },
         value: {
             type: [String, Array],
@@ -179,29 +178,6 @@ export default {
         useTools: {
             type: Boolean,
             default: false
-        }
-    },
-    watch: {
-        min(v) {
-            let minArr = v.split('-');
-            this.minYear = parseInt(minArr[0]);
-            this.minMonth = parseInt(minArr[1]);
-            this.minDate = parseInt(minArr[2]);
-        },
-        max(v) {
-            let maxArr = v.split('-');
-            this.maxYear = parseInt(maxArr[0]);
-            this.maxMonth = parseInt(maxArr[1]);
-            this.maxDate = parseInt(maxArr[2]);
-        },
-        range(newVal, oldVal) {
-            if (newVal === oldVal) return;
-            if (newVal && Object.prototype.toString.call(this.value).slice(8, -1) === 'String') {
-                this.$emit('input', ['', ''])
-            }
-            if (!newVal && Object.prototype.toString.call(this.value).slice(8, -1) === 'Array') {
-                this.$emit('input', '')
-            }
         }
     },
     computed: {
