@@ -515,8 +515,8 @@ export default {
         }
     },
     data() {
-        let now = new Date(),
-            year = now.getFullYear(),
+        const now = new Date();
+        const year = now.getFullYear(),
             month = now.getMonth(),
             date = now.getDate();
 
