@@ -4,7 +4,7 @@
             <tab-title title="经纪人排行" tip="只传入 v-model">
             </tab-title>
             <div class="chart-box-con">
-                <drop-selector v-model="dateSingle" @input="dateSingleChange"></drop-selector>
+                <drop-selector :data="data" text-key-name="city" @change="singleChange"></drop-selector>
             </div>
         </div>
 
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import data from '@/data/api'
 import TabTitle from '@/components/TabTitle';
 import DropSelector from '@/components/DropSelector';
 
@@ -23,26 +24,15 @@ export default {
     },
     data() {
         return {
-            dateSingle: formatDate(new Date()),
-            dateCommon: [formatDate(getCurrentMonthFirst()), formatDate(getCurrentMonthLast())],
-            dateWeek: [formatDate(getCurrentMonthFirst())]
+            data: data.data
         }
     },
     methods: {
-        dateSingleChange(date) {
-            console.log(date);
-        },
-        dateCommonChange(date) {
-            console.log(date);
-        },
-        dateWeekChange(date) {
-            console.log(date);
+        singleChange(data) {
+            console.log(data);
         }
     },
     created() {
-        // 初始化日期
-        this.timeStart = formatDate(getCurrentMonthFirst());
-        this.timeEnd = formatDate(getCurrentMonthLast());
     }
 }
 </script>

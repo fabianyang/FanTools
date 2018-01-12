@@ -1,15 +1,15 @@
 <template>
-    <div :class="klass" :style="styl">
-        <div class="drop-selector-t" @click="this.panelState = !this.panelState">
-            <p>{{ textHolder }}</p>
-            <span class="multidrop-selectoror-checkCount">{{ checkedCount }}
+    <div :class="klaz" :style="styl">
+        <div class="drop-selector-button" @click="panelState = !panelState">
+            <p>{{ text }}</p>
+            <span v-show="false" class="multidrop-selectoror-checkCount">{{ checkedCount }}
             </span>
             <i></i>
         </div>
-        <div class="drop-selector-c" v-if="multi" v-show="panelState">
+        <div class="drop-selector-container" v-if="multi" v-show="panelState">
             <ul class="clearfix" v-if="canSearch">
                 <li style="border-bottom: 1px solid #ccc">
-                    <input type="text" placeholder="keywordHolder" v-model="keyword"/>
+                    <input type="text" placeholder="keywordHolder" v-model="inputKeyword"/>
                 </li>
             </ul>
             <ul class="clearfix" v-if="canSelectAll">
@@ -17,8 +17,8 @@
                     <label for="component_multidrop-selectoror_all" style="width:100%;display:block;cursor:pointer;"><input type="checkbox" id="component_multidrop-selectoror_all" data-name='all' v-model="allChecked" /> 全选</label>
                 </li>
             </ul>
-            <ul style="max-height:200px;overflow-x:hidden;">
-                <li v-for="(item, index) in list" :key="index" v-show="!keyword || itemFilter(item)">
+            <ul>
+                <li v-for="(item, index) in list" :key="index" v-show="!inputKeyword || itemFilter(item)">
                     <label :for="'component_multidrop-selectoror_item_' + index" style="width:100%;display:block;cursor:pointer;"><input type="checkbox" :id="'component_multidrop-selectoror_item_' + index" v-model="item.checked" /> {{ item.text }}</label>
                 </li>
             </ul>
@@ -29,24 +29,21 @@
                 </li>
             </ul>
         </div>
-        <div class="drop-selector-c" v-else v-show="panelState">
+        <div class="drop-selector-container" v-else v-show="panelState">
             <ul class="clearfix" v-if="canSearch">
                 <li style="border-bottom: 1px solid #ccc">
-                    <input type="text" placeholder="keywordHolder" v-model="keyword"/>
+                    <input type="text" placeholder="keywordHolder" v-model="inputKeyword"/>
                 </li>
             </ul>
-            <ul v-if="canSelectAll">
-                <li v-if="showAll" @click="selected(all, 0)">{{ '全部' }}</li>
-            </ul>
-            <ul style="max-height:200px;overflow-x:hidden;">
-                <li v-for="(item, index) in list" :key="index" @click="selected(item, showAll ? index + 1 : index)" v-text="item.text" v-show="!keyword || itemFilter(item)"></li>
+            <ul>
+                <li v-for="(item, index) in list" :key="index" @click="selected(item, index)" v-show="!inputKeyword || itemFilter(item)">{{ item[textKeyName] }}</li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-
+// http://ourjs.com/detail/532bc9f36922aa7e1d000001
 export default {
     name: 'Dropdrop-selectoror',
     props: {
@@ -58,11 +55,11 @@ export default {
             type: String,
             default: 'text'
         },
-        klass: {
+        klaz: {
             type: String,
             default: 'drop-selector'
         },
-        style: {
+        styl: {
             type: Object
         },
         textHolder: {
@@ -119,10 +116,16 @@ export default {
             // 面板位置。
             coordinates: {},
             inputKeyword: '',
-            list: data
+            list: this.data,
+            itemSelected: {}
         }
     },
     computed: {
+        text() {
+            if (!this.multi) {
+                return this.itemSelected[this.textKeyName] || this.textHolder;
+            }
+        },
         allChecked: {
             get() {
                 return this.checkedCount === this.list.length;
@@ -157,8 +160,12 @@ export default {
                 this.panelState = false;
             }
         },
-        toggle() {
-            this.panelState = !this.panelState;
+        selected(item, index) {
+            // 这里改了 Item, list 初始化时，最好就附上 index
+            item.index = index;
+            this.itemSelected = item;
+            this.$emit('change', Object.assign({}, item));
+            this.panelState = false;
         },
         itemCheckClick(item) {
             this.list = this.list.map((v) => {
@@ -169,7 +176,7 @@ export default {
             });
         },
         itemFilter(item) {
-            let exp = new RegExp(this.keyword.toLowerCase(), 'gi');
+            let exp = new RegExp(this.inputKeyword.toLowerCase(), 'gi');
             let str = [item.text.toLowerCase()];
             if (this.filterkeys) {
                 this.filterkeys.split(',').forEach((v) => {
@@ -214,6 +221,7 @@ export default {
 div, ul, li{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 ul,
 li {
@@ -230,14 +238,68 @@ a:hover{color: #333; text-decoration: none;
     color: #666;
 }
 
-.drop-selector-t {
+.drop-selector-button {
+    width: 240px;
+    position: relative;
     padding: 3px 20px 3px 6px;
     text-align: left;
-    cursor: pointer;
     color: #666;
     border: 1px solid #ddd;
     border-radius: 3px;
     background-color: #fff;
+    cursor: pointer;
+    user-select: none;
+
+    & > i {
+        position: absolute;
+        top: 50%;
+        right: 6px;
+        margin-top: -3px;
+        font-size: 0;
+    }
+
+    & > i:after {
+        border: 6px solid transparent;
+        border-top: 6px solid #ccc;
+        content: ' ';
+        display: inline-block;
+    }
+}
+
+
+.drop-selector-container {
+    margin-top: 4px;
+    position: absolute;
+    min-width: 240px;
+    max-width: 480px;
+    border: 1px solid #ddd;
+    background: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+
+    & > ul {
+        max-height: 220px;
+        overflow: auto;
+    }
+
+    & li {
+        line-height: 32px;
+        height: 32px;
+        padding-left: 6px;
+        padding-right: 20px;
+        cursor: pointer;
+    }
+
+    & li:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+
+.drop-selector-container li label {
+    width: 100%;
+    display: block;
+    cursor: pointer;
 }
 
 span {
@@ -262,49 +324,6 @@ span {
     padding: 0;
 }
 
-.drop-selector-t i {
-    display: inline-block;
-    width: 10px;
-    height: 6px;
-    // background: url(../images/sprite.png) -76px -1px;
-}
-
-.drop-selector-t i {
-    position: absolute;
-    top: 50%;
-    right: 6px;
-    margin: 0;
-    margin-top: -3px;
-}
-
-.drop-selector-c {
-    width: 200%;
-    display: none;
-}
-
-.drop-selector-c {
-    position: absolute;
-    z-index: 6;
-    left: 0;
-    right: 0;
-    border: 1px solid #ddd;
-    background: #fff;
-}
-
-.drop-selector-c li {
-    // border-bottom: 1px solid rgb(204, 204, 204);
-    line-height: 32px;
-    height: 32px;
-    padding-left: 6px;
-    cursor: pointer;
-    background: #fff;
-}
-
-.drop-selector-c li label {
-    width: 100%;
-    display: block;
-    cursor: pointer;
-}
 
 input[type=checkbox], input[type=radio] {
     -moz-box-sizing: border-box;
@@ -328,7 +347,7 @@ button, input, optgroup, drop-selector, textarea {
     color: inherit;
 }
 
-.drop-selector-c .multidrop-selector-button-box {
+.drop-selector-container .multidrop-selector-button-box {
     line-height: 24px;
     height: 24px;
     padding: 3px;
