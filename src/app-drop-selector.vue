@@ -1,10 +1,26 @@
 <template>
     <div id="app">
-        <div class="chart-box clearfix">
+        <!-- <div class="chart-box clearfix">
             <tab-title title="经纪人排行" tip="只传入 v-model">
             </tab-title>
             <div class="chart-box-con">
                 <drop-selector :data="data" text-key-name="city" @change="singleChange"></drop-selector>
+            </div>
+        </div>
+
+        <div class="chart-box clearfix">
+            <tab-title title="经纪人排行" tip="只传入 v-model">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="data" text-key-name="city" @change="singleChange" can-search filter-keys="suoxie,pinyin"></drop-selector>
+            </div>
+        </div> -->
+
+        <div class="chart-box clearfix">
+            <tab-title title="经纪人排行" tip="只传入 v-model">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="dataMulti" text-key-name="city" @change="multiChange" multi can-search default-select-all></drop-selector>
             </div>
         </div>
 
@@ -24,11 +40,15 @@ export default {
     },
     data() {
         return {
-            data: data.data
+            data: data.data,
+            dataMulti: data.data.splice(0, 10)
         }
     },
     methods: {
         singleChange(data) {
+            console.log(data);
+        },
+        multiChange(data) {
             console.log(data);
         }
     },

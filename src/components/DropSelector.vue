@@ -1,40 +1,33 @@
 <template>
     <div :class="klaz" :style="styl">
+        <div class="drop-selector-enumContainer" v-if="multi && enumSelected && listChecked.length" v-show="listChecked.length" :style="coordinates">
+            <span v-for="(item, index) in listChecked" :key="index">{{ item[textKeyName] }}<i @click="item.dsChecked = !item.dsChecked"></i></span>
+        </div>
         <div class="drop-selector-button" @click="panelState = !panelState">
-            <p>{{ text }}</p>
-            <span v-show="false" class="multidrop-selectoror-checkCount">{{ checkedCount }}
-            </span>
+            <p>{{ text }}<em v-show="listChecked.length" >+{{ listChecked.length }}</em></p>
             <i></i>
         </div>
-        <div class="drop-selector-container" v-if="multi" v-show="panelState">
-            <ul class="clearfix" v-if="canSearch">
-                <li style="border-bottom: 1px solid #ccc">
-                    <input type="text" placeholder="keywordHolder" v-model="inputKeyword"/>
-                </li>
-            </ul>
-            <ul class="clearfix" v-if="canSelectAll">
-                <li>
-                    <label for="component_multidrop-selectoror_all" style="width:100%;display:block;cursor:pointer;"><input type="checkbox" id="component_multidrop-selectoror_all" data-name='all' v-model="allChecked" /> 全选</label>
-                </li>
-            </ul>
+        <div class="drop-selector-container" v-if="multi" v-show="panelState" :style="coordinates">
+            <div class="drop-selector-search" v-if="canSearch">
+                <input type="text" :placeholder="keywordHolder" v-model="inputKeyword"/>
+            </div>
             <ul>
+                <li v-if="canSelectAll">
+                    <input type="checkbox" id="drop-selectoror_all" v-model="allChecked"/><label for="drop-selectoror_all" >全选</label>
+                </li>
                 <li v-for="(item, index) in list" :key="index" v-show="!inputKeyword || itemFilter(item)">
-                    <label :for="'component_multidrop-selectoror_item_' + index" style="width:100%;display:block;cursor:pointer;"><input type="checkbox" :id="'component_multidrop-selectoror_item_' + index" v-model="item.checked" /> {{ item.text }}</label>
+                    <input type="checkbox" :id="'drop-selectoror_item_' + index" v-model="item.dsChecked" /><label :for="'drop-selectoror_item_' + index">{{ item[textKeyName] }}</label>
                 </li>
             </ul>
-            <ul class="clearfix">
-                <li class="multidrop-selector-button-box">
-                    <a class="btn multidrop-selector-button" @click="okClick">确定</a>
-                    <a class="btn multidrop-selector-button" @click="panelState=false">取消</a>
-                </li>
-            </ul>
+            <div class="drop-selector-footer">
+                <a class="btn" @click="okClick">确定</a>
+                <a class="btn" @click="panelState=false">取消</a>
+            </div>
         </div>
-        <div class="drop-selector-container" v-else v-show="panelState">
-            <ul class="clearfix" v-if="canSearch">
-                <li style="border-bottom: 1px solid #ccc">
-                    <input type="text" placeholder="keywordHolder" v-model="inputKeyword"/>
-                </li>
-            </ul>
+        <div class="drop-selector-container" v-if="!multi" v-show="panelState" :style="coordinates">
+            <div class="drop-selector-search" v-if="canSearch">
+                <input type="text" :placeholder="keywordHolder" v-model="inputKeyword"/>
+            </div>
             <ul>
                 <li v-for="(item, index) in list" :key="index" @click="selected(item, index)" v-show="!inputKeyword || itemFilter(item)">{{ item[textKeyName] }}</li>
             </ul>
@@ -44,6 +37,13 @@
 
 <script>
 // http://ourjs.com/detail/532bc9f36922aa7e1d000001
+
+
+const gTypeString = (value) => {
+    return Object.prototype.toString.call(value).slice(8, -1);
+    // return {}.toString.call(obj) == "[object " + type + "]" @seajs
+};
+
 export default {
     name: 'Dropdrop-selectoror',
     props: {
@@ -66,29 +66,33 @@ export default {
             type: String,
             default: '请选择'
         },
-        itemIsText: {
-            type: Boolean,
-            default: true
-        },
-        multi: {
-            type: Boolean,
-            default: false
-        },
         canSearch: {
             type: Boolean,
             default: false
         },
-        canSelectAll: {
-            type: Boolean,
-            default: false
+        keywordHolder: {
+            type: String,
+            default: '输入关键字搜索'
         },
         filterKeys: {
             type: String,
             default: 'text'
         },
-        keywordHolder: {
-            type: String,
-            default: '输入关键字搜索'
+        multi: {
+            type: Boolean,
+            default: false
+        },
+        canSelectAll: {
+            type: Boolean,
+            default: true
+        },
+        defaultSelectAll: {
+            type: Boolean,
+            default: false
+        },
+        enumSelected: {
+            type: Boolean,
+            default: true
         },
         maxSelectCount: {
             type: Number,
@@ -107,8 +111,24 @@ export default {
     },
     data() {
         // 判断是否都为字符串，判断是否有 checked 进行替换。
-        // 判断是否第一个默认选择为显示文字
         // 判断是否默认全选，或部分选中
+        // tip：this.data 里面是对象，即使 this.data.concat() 也不是复制数组。可以用 this.$set() 但是会更改源数据。
+        let list = this.data.map((v, i) => {
+            const ts = gTypeString(v);
+
+            let o = {};
+            switch(ts) {
+                case 'Object':
+                    o = Object.assign({}, v);
+                    o.dsChecked = this.defaultSelectAll || !!v.checked;
+                    break;
+                case 'String':
+                    o[this.textKeyName] = v;
+                    o.dsChecked = this.defaultSelectAll;
+                    break;
+            }
+            return o;
+        });
 
         return {
             // 面板状态，显示、隐藏。
@@ -116,42 +136,41 @@ export default {
             // 面板位置。
             coordinates: {},
             inputKeyword: '',
-            list: this.data,
-            itemSelected: {}
+            // 单选使用
+            itemSelected: {},
+            list
         }
     },
     computed: {
         text() {
             if (!this.multi) {
                 return this.itemSelected[this.textKeyName] || this.textHolder;
+            } else {
+                let text = this.textHolder;
+
+                if (this.allChecked) {
+                    text = '全选';
+                } else if (this.listChecked.length) {
+                    text = '已选择';
+                }
+
+                return text;
             }
         },
         allChecked: {
             get() {
-                return this.checkedCount === this.list.length;
+                return this.listChecked.length === this.list.length;
             },
             set(value) {
-                this.list = this.list.map((item) => {
-                    item.checked = value;
-                    return item;
+                this.list.forEach((item) => {
+                    this.$set(item, 'dsChecked', value);
                 });
             }
         },
-        checkedCount: {
-            get() {
-                let count = this.list.filter((item) => {
-                    return item.checked || false;
-                }).length;
-
-                if (count === this.list.length) {
-                    this.place = '全选';
-                } else if (count === 0) {
-                    this.place = '请选择';
-                } else {
-                    this.place = '部分选择';
-                }
-                return count;
-            }
+        listChecked() {
+            return this.list.filter((item) => {
+                return item.dsChecked || false;
+            })
         }
     },
     methods: {
@@ -161,52 +180,49 @@ export default {
             }
         },
         selected(item, index) {
-            // 这里改了 Item, list 初始化时，最好就附上 index
-            item.index = index;
             this.itemSelected = item;
-            this.$emit('change', Object.assign({}, item));
+            this.$emit('change', Object.assign({}, this.data[index], {vmIndex: index}));
             this.panelState = false;
         },
-        itemCheckClick(item) {
-            this.list = this.list.map((v) => {
-                if (item.key === v.key) {
-                    v.checked = item.checked;
-                }
-                return v;
-            });
-        },
         itemFilter(item) {
-            let exp = new RegExp(this.inputKeyword.toLowerCase(), 'gi');
-            let str = [item.text.toLowerCase()];
-            if (this.filterkeys) {
-                this.filterkeys.split(',').forEach((v) => {
+            const exp = new RegExp(this.inputKeyword.toLowerCase(), 'gi');
+            const filterKeys = this.textKeyName + ',' + this.filterKeys;
+            // 显示文本
+            let str = [];
+            // filterKeys 字符串
+            filterKeys.split(',').forEach((v) => {
+                if (v && item[v]) {
                     str.push(item[v].toLowerCase());
-                });
-            }
+                }
+            });
             return exp.test(str.join(','));
         },
         okClick() {
             let result = [];
             this.list.forEach((item, index) => {
-                if (item.checked) {
-                    result.push(Object.assign({}, item, {
-                        key: item.key,
-                        text: item.text,
-                        index
+                if (item.dsChecked) {
+                    result.push(Object.assign({}, this.data[index], {
+                        vmIndex: index
                     }));
                 }
             });
-
-            if (this.eventName) {
-                this.$emit(this.eventName, result);
-            }
-
+            this.$emit('change', result);
             this.panelState = false;
         }
     },
     created() {},
     mounted() {
         this.$nextTick(() => {
+            const el = this.$el,
+                clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+            // 判断面板靠左或靠右对齐
+            if (this.$el.offsetLeft + 241 > clientWidth) {
+                this.coordinates = { right: '0' }
+            } else {
+                this.coordinates = { left: '0' }
+            }
+
             window.addEventListener('click', this.close);
         });
     },
@@ -221,12 +237,19 @@ export default {
 div, ul, li{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 ul,
 li {
   list-style: none;
 }
+input {margin: 0; padding:0; *font-size: 100%;}
+input {
+    border: none;
+    outline: 0;
+    background: 0 0;
+}
+input::-ms-clear {display: none }
+input:focus{border-color: #b5bcc9; outline: none; box-shadow: 0;}
 a {color: #333; text-decoration: none; outline: 0 }
 a:hover{color: #333; text-decoration: none;
     cursor: pointer;
@@ -249,6 +272,7 @@ a:hover{color: #333; text-decoration: none;
     background-color: #fff;
     cursor: pointer;
     user-select: none;
+    box-sizing: border-box;
 
     & > i {
         position: absolute;
@@ -264,6 +288,16 @@ a:hover{color: #333; text-decoration: none;
         content: ' ';
         display: inline-block;
     }
+
+    & em {
+        font-style: normal;
+        position: absolute;
+        background-color: #eee;
+        border-radius: 4px;
+        padding: 0 6px;
+        box-sizing: border-box;
+        margin-left: 5px;
+    }
 }
 
 
@@ -274,43 +308,176 @@ a:hover{color: #333; text-decoration: none;
     max-width: 480px;
     border: 1px solid #ddd;
     background: #fff;
-    overflow: hidden;
+    border-radius: 3px;
     white-space: nowrap;
+    z-index: 5000;
+
+    &:after, &:before {
+        border: 4px solid transparent;
+        border-bottom: 4px solid #fff;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: -8px;
+        left: 8px;
+        content: ' '
+    }
+
+    &:before {
+        border-bottom-color: #666;
+    }
 
     & > ul {
         max-height: 220px;
         overflow: auto;
+        box-sizing: border-box;
     }
 
     & li {
         line-height: 32px;
         height: 32px;
         padding-left: 6px;
-        padding-right: 20px;
         cursor: pointer;
     }
 
     & li:hover {
         background-color: #f0f0f0;
     }
+
+    & li label {
+        width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+        margin-left: -18px;
+        margin-right: -20px;
+        text-indent: 22px;
+        cursor: pointer;
+    }
 }
 
+.drop-selector-enumContainer {
+    position: absolute;
+    top: -32px;
+    padding: 5px;
+    min-width: 240px;
+    max-width: 480px;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 3px;
+    z-index: 5000;
 
-.drop-selector-container li label {
-    width: 100%;
-    display: block;
+    & > span {
+        text-align: center;
+        padding: 4px 22px 4px 8px;
+        background: #eee;
+        color: #333;
+        margin: 2px;
+        border-radius: 3px;
+        white-space: nowrap;
+        // display: inline-block;
+    }
+
+    & i {
+        position: absolute;
+        background-color: #ccc;
+        width: 12px;
+        height: 12px;
+        color: #fff;
+        margin-left: 5px;
+        transition: color .25s;
+        transform: rotateZ(45deg);
+        border-radius: 50%;
+        margin-top: 3px;
+        cursor: pointer;
+    }
+
+    & i:hover {
+        background-color: #999;
+        color: #eee;
+    }
+
+    & i:before {
+        content: "";
+        width: 8px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-top: 2px solid;
+    }
+
+    & i:after {
+        content: "";
+        height: 8px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-left: 2px solid;
+    }
+}
+
+.drop-selector-search {
+    line-height: 32px;
+    height: 32px;
+    border-bottom: 1px solid #ddd;
+
+    & > input {
+        padding: 0 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.drop-selector-all {
+    line-height: 32px;
+    height: 32px;
+    padding-left: 6px;
     cursor: pointer;
+
+    & > label {
+        width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+        margin-left: -18px;
+        margin-right: -20px;
+        text-indent: 22px;
+        cursor: pointer;
+    }
 }
 
-span {
-    font-size: 14px;
-    position: relative;
-    float: left;
-    padding: 10px 12px;
-    cursor: pointer;
-    text-align: center;
-    color: #333;
+
+.drop-selector-footer {
+    line-height: 24px;
+    height: 24px;
+    padding: 5px 0;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    .btn {
+        font-size: 12px;
+        border-radius: 2px;
+        text-align: center;
+        height: 24px;
+        line-height: 24px;
+        box-shadow: 0;
+        border: none;
+        display: inline-block;
+        background-color: #5A95F7;
+        color: #fff;
+        width: 36px;
+        margin-right: 6px;
+    }
 }
+// span {
+//     font-size: 14px;
+//     position: relative;
+//     float: left;
+//     padding: 10px 12px;
+//     cursor: pointer;
+//     text-align: center;
+//     color: #333;
+// }
 
 .multidrop-selectoror-checkCount {
     font-size: 12px;
@@ -325,11 +492,11 @@ span {
 }
 
 
-input[type=checkbox], input[type=radio] {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0;
-}
+// input[type=checkbox], input[type=radio] {
+//     -moz-box-sizing: border-box;
+//     box-sizing: border-box;
+//     padding: 0;
+// }
 
 input, drop-selector, textarea {
     border: none;
@@ -337,15 +504,15 @@ input, drop-selector, textarea {
     background: 0 0;
 }
 
-input {
-    line-height: normal;
-}
+// input {
+//     line-height: normal;
+// }
 
-button, input, optgroup, drop-selector, textarea {
-    font: inherit;
-    margin: 0;
-    color: inherit;
-}
+// button, input, optgroup, drop-selector, textarea {
+//     font: inherit;
+//     margin: 0;
+//     color: inherit;
+// }
 
 .drop-selector-container .multidrop-selector-button-box {
     line-height: 24px;
@@ -362,15 +529,15 @@ button, input, optgroup, drop-selector, textarea {
     padding: 0 5px;
 }
 
-.btn {
-    display: inline-block;
-    margin-left: 20px;
-    padding: 3px 10px;
-    cursor: pointer;
-    border: 1px solid #dcdcdc;
-    border-radius: 3px;
-    background-color: #fff;
-}
+// .btn {
+//     display: inline-block;
+//     margin-left: 20px;
+//     padding: 3px 10px;
+//     cursor: pointer;
+//     border: 1px solid #dcdcdc;
+//     border-radius: 3px;
+//     background-color: #fff;
+// }
 
 </style>
 
