@@ -1,9 +1,12 @@
 <template>
     <div :class="klaz" :style="styl">
-        <div class="drop-selector-enumContainer" v-if="multi && enumSelected && listChecked.length" v-show="listChecked.length" :style="coordinates">
-            <span v-for="(item, index) in listChecked" :key="index">{{ item[textKeyName] }}<i @click="item.dsChecked = !item.dsChecked"></i></span>
+        <div class="drop-selector-button" v-if="multi && true && listChecked.length" v-show="listChecked.length" :style="coordinates"  @click="panelState = !panelState">
+            <div class="drop-selector-checked" @click.stop>
+                <span v-for="(item, index) in listChecked" :key="index">{{ item[textKeyName] }}<i @click.stop="item.dsChecked = !item.dsChecked"></i></span>
+            </div>
+            <i></i>
         </div>
-        <div class="drop-selector-button" @click="panelState = !panelState">
+        <div class="drop-selector-button" v-else @click="panelState = !panelState">
             <p>{{ text }}<em v-show="listChecked.length" >+{{ listChecked.length }}</em></p>
             <i></i>
         </div>
@@ -92,7 +95,7 @@ export default {
         },
         enumSelected: {
             type: Boolean,
-            default: true
+            default: false
         },
         maxSelectCount: {
             type: Number,
@@ -274,6 +277,11 @@ a:hover{color: #333; text-decoration: none;
     user-select: none;
     box-sizing: border-box;
 
+    & > p {
+        line-height: 2;
+        padding: 3px 0;
+    }
+
     & > i {
         position: absolute;
         top: 50%;
@@ -300,6 +308,62 @@ a:hover{color: #333; text-decoration: none;
     }
 }
 
+
+.drop-selector-checked {
+    max-height: 60px;
+    overflow-y: auto;
+
+    & span {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        padding: 4px 22px 4px 8px;
+        background: #eee;
+        color: #333;
+        margin: 2px;
+        border-radius: 3px;
+        white-space: nowrap;
+    }
+
+    & i {
+        position: absolute;
+        background-color: #ccc;
+        width: 12px;
+        height: 12px;
+        color: #fff;
+        margin-left: 5px;
+        transition: color .25s;
+        transform: rotateZ(45deg);
+        border-radius: 50%;
+        margin-top: 3px;
+        cursor: pointer;
+    }
+
+    & i:hover {
+        background-color: #999;
+        color: #eee;
+    }
+
+    & i:before {
+        content: "";
+        width: 8px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-top: 2px solid;
+    }
+
+    & i:after {
+        content: "";
+        height: 8px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-left: 2px solid;
+    }
+}
 
 .drop-selector-container {
     margin-top: 4px;
@@ -355,69 +419,6 @@ a:hover{color: #333; text-decoration: none;
     }
 }
 
-.drop-selector-enumContainer {
-    position: absolute;
-    top: -32px;
-    padding: 5px;
-    min-width: 240px;
-    max-width: 480px;
-    border: 1px solid #ddd;
-    background: #fff;
-    box-sizing: border-box;
-    border-radius: 3px;
-    z-index: 5000;
-
-    & > span {
-        text-align: center;
-        padding: 4px 22px 4px 8px;
-        background: #eee;
-        color: #333;
-        margin: 2px;
-        border-radius: 3px;
-        white-space: nowrap;
-        // display: inline-block;
-    }
-
-    & i {
-        position: absolute;
-        background-color: #ccc;
-        width: 12px;
-        height: 12px;
-        color: #fff;
-        margin-left: 5px;
-        transition: color .25s;
-        transform: rotateZ(45deg);
-        border-radius: 50%;
-        margin-top: 3px;
-        cursor: pointer;
-    }
-
-    & i:hover {
-        background-color: #999;
-        color: #eee;
-    }
-
-    & i:before {
-        content: "";
-        width: 8px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-top: 2px solid;
-    }
-
-    & i:after {
-        content: "";
-        height: 8px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-left: 2px solid;
-    }
-}
-
 .drop-selector-search {
     line-height: 32px;
     height: 32px;
@@ -469,15 +470,8 @@ a:hover{color: #333; text-decoration: none;
         margin-right: 6px;
     }
 }
-// span {
-//     font-size: 14px;
-//     position: relative;
-//     float: left;
-//     padding: 10px 12px;
-//     cursor: pointer;
-//     text-align: center;
-//     color: #333;
-// }
+
+
 
 .multidrop-selectoror-checkCount {
     font-size: 12px;
