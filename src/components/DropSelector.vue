@@ -1,6 +1,6 @@
 <template>
     <div :class="klaz" :style="styl">
-        <div class="drop-selector-button" v-if="multi && true && listChecked.length" v-show="listChecked.length" :style="coordinates"  @click="panelState = !panelState">
+        <div class="drop-selector-button" v-if="multi && enumSelect && listChecked.length" v-show="listChecked.length" :style="coordinates"  @click="panelState = !panelState">
             <div class="drop-selector-checked" @click.stop>
                 <span v-for="(item, index) in listChecked" :key="index">{{ item[textKeyName] }}<i @click.stop="item.dsChecked = !item.dsChecked"></i></span>
             </div>
@@ -16,10 +16,10 @@
             </div>
             <ul>
                 <li v-if="canSelectAll">
-                    <input type="checkbox" id="drop-selectoror_all" v-model="allChecked"/><label for="drop-selectoror_all" >全选</label>
+                    <input type="checkbox" :id="'ds_all_' + vmUid" v-model="allChecked"/><label :for="'ds_all_' + vmUid" >全选</label>
                 </li>
                 <li v-for="(item, index) in list" :key="index" v-show="!inputKeyword || itemFilter(item)">
-                    <input type="checkbox" :id="'drop-selectoror_item_' + index" v-model="item.dsChecked" /><label :for="'drop-selectoror_item_' + index">{{ item[textKeyName] }}</label>
+                    <input type="checkbox" :id="'ds_item_' + vmUid + '_' + index" v-model="item.dsChecked" /><label :for="'ds_item_' + vmUid + '_' + index">{{ item[textKeyName] }}</label>
                 </li>
             </ul>
             <div class="drop-selector-footer">
@@ -48,7 +48,7 @@ const gTypeString = (value) => {
 };
 
 export default {
-    name: 'Dropdrop-selectoror',
+    name: 'drop-selectoror',
     props: {
         data: {
             type: Array,
@@ -93,7 +93,7 @@ export default {
             type: Boolean,
             default: false
         },
-        enumSelected: {
+        enumSelect: {
             type: Boolean,
             default: false
         },
@@ -107,10 +107,6 @@ export default {
         }
     },
     watch: {
-        datas() {
-        },
-        tragger(nv) {
-        },
     },
     data() {
         // 判断是否都为字符串，判断是否有 checked 进行替换。
@@ -134,6 +130,7 @@ export default {
         });
 
         return {
+            vmUid: this._uid,
             // 面板状态，显示、隐藏。
             panelState: false,
             // 面板位置。

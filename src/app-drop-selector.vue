@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <!-- <div class="chart-box clearfix">
-            <tab-title title="经纪人排行" tip="只传入 v-model">
+        <div class="chart-box clearfix">
+            <tab-title title="单项选择" tip="非搜索模式">
             </tab-title>
             <div class="chart-box-con">
                 <drop-selector :data="data" text-key-name="city" @change="singleChange"></drop-selector>
@@ -9,18 +9,26 @@
         </div>
 
         <div class="chart-box clearfix">
-            <tab-title title="经纪人排行" tip="只传入 v-model">
+            <tab-title title="单项选择" tip="搜索模式 filter-keys 为过滤字段，默认为 'text'">
             </tab-title>
             <div class="chart-box-con">
-                <drop-selector :data="data" text-key-name="city" @change="singleChange" can-search filter-keys="suoxie,pinyin"></drop-selector>
+                <drop-selector :data="dataSearch" text-key-name="city" @change="singleChange" can-search filter-keys="suoxie,pinyin"></drop-selector>
             </div>
-        </div> -->
+        </div>
 
         <div class="chart-box clearfix">
-            <tab-title title="经纪人排行" tip="只传入 v-model">
+            <tab-title title="多项选择" tip="default-select-all 默认全选">
             </tab-title>
             <div class="chart-box-con">
-                <drop-selector :data="dataMulti" text-key-name="city" @change="multiChange" multi can-search default-select-all></drop-selector>
+                <drop-selector :data="dataMulti" text-key-name="city" @change="multiChange" multi default-select-all></drop-selector>
+            </div>
+        </div>
+
+        <div class="chart-box clearfix">
+            <tab-title title="多项选择" tip="搜索模式 同样可以设置 filter-keys 枚举模式">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="dataMultiSearch" text-key-name="city" @change="multiChange" multi can-search enum-select></drop-selector>
             </div>
         </div>
 
@@ -40,8 +48,10 @@ export default {
     },
     data() {
         return {
-            data: data.data,
-            dataMulti: data.data.splice(0, 10)
+            data: JSON.parse(JSON.stringify(data.data)),
+            dataSearch: JSON.parse(JSON.stringify(data.data)),
+            dataMulti: JSON.parse(JSON.stringify(data.data)).splice(-10),
+            dataMultiSearch: JSON.parse(JSON.stringify(data.data)).splice(0, 10)
         }
     },
     methods: {
