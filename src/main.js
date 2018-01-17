@@ -1,6 +1,5 @@
 import Vue from 'vue';
-// import App from './app-date-picker.vue';
-import App from './app-drop-selector.vue';
+import App from './app.vue';
 import Toast from './components/toast';
 
 // https://segmentfault.com/a/1190000008188461

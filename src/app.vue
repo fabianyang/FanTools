@@ -42,6 +42,38 @@
                 <date-picker range="week" v-model="dateCommon" @input="dateCommonChange" useTools></date-picker>
             </div>
         </div>
+        <div class="chart-box clearfix">
+            <tab-title title="单项选择" tip="非搜索模式">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="data" text-key-name="city" @change="singleChange"></drop-selector>
+            </div>
+        </div>
+
+        <div class="chart-box clearfix">
+            <tab-title title="单项选择" tip="搜索模式 filter-keys 为过滤字段，默认为 'text'">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="dataSearch" text-key-name="city" @change="singleChange" can-search filter-keys="suoxie,pinyin"></drop-selector>
+            </div>
+        </div>
+
+        <div class="chart-box clearfix">
+            <tab-title title="多项选择" tip="default-select-all 默认全选">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="dataMulti" text-key-name="city" @change="multiChange" multi default-select-all></drop-selector>
+            </div>
+        </div>
+
+        <div class="chart-box clearfix">
+            <tab-title title="多项选择" tip="搜索模式 同样可以设置 filter-keys 枚举模式">
+            </tab-title>
+            <div class="chart-box-con">
+                <drop-selector :data="dataMultiSearch" text-key-name="city" @change="multiChange" multi can-search enum-select></drop-selector>
+            </div>
+        </div>
+
         <a href="https://github.com/yangfan86/VuTooz.git">
             <img style="position: absolute; top: 0; right: 0; border: 0;" src="./assets/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
         </a>
@@ -53,6 +85,9 @@
 // forkme 彩带 https://www.cnblogs.com/bluetata/articles/8127064.html
 import TabTitle from '@/components/TabTitle';
 import DatePicker from '@/components/DatePicker';
+
+import data from '@/data/api'
+import DropSelector from '@/components/DropSelector';
 
 // 格式化日期，返回2017-04-07格式
 const formatDate = (date) => {
@@ -83,14 +118,18 @@ export default {
     name: 'app',
     components: {
         TabTitle,
-        DatePicker
+        DatePicker,
+        DropSelector
     },
     data() {
         return {
             dateSingle: formatDate(new Date()),
             dateCommon: [formatDate(getCurrentMonthFirst()), formatDate(getCurrentMonthLast())],
             dateWeek: [formatDate(getCurrentMonthFirst())],
-            html: '<pre><code class="html">&lt;div&lt;&lt;/div&lt;</code></pre>'
+            data: JSON.parse(JSON.stringify(data.data)),
+            dataSearch: JSON.parse(JSON.stringify(data.data)),
+            dataMulti: JSON.parse(JSON.stringify(data.data)).splice(-10),
+            dataMultiSearch: JSON.parse(JSON.stringify(data.data)).splice(0, 10)
         }
     },
     methods: {
@@ -102,6 +141,12 @@ export default {
         },
         dateWeekChange(date) {
             console.log(date);
+        },
+        singleChange(data) {
+            console.log(data);
+        },
+        multiChange(data) {
+            console.log(data);
         }
     },
     created() {
@@ -158,6 +203,7 @@ body {
     min-height: 768px;
     box-sizing: border-box;
     position: relative;
+    margin-bottom: 280px;
 }
 
 .chart-box {
